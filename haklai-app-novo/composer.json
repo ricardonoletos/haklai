@@ -1,0 +1,21 @@
+{
+  "name": "haklai/haklai-church",
+  "description": "Haklai Church — Plugin WordPress Modular (Core + Presença + Financeiro)",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Ricardo Sarmento",
+      "homepage": "https://linx.pt"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Haklai\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.0",
+    "phpoffice/phpspreadsheet": "^1.29"
+  }
+}

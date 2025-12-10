@@ -1,0 +1,198 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║   ✅ MENU CONFIGURAÇÕES CORRIGIDO                                        ║
+║                                                                            ║
+║   Teste Imediato - 1 Minuto                                               ║
+║   Data: 13 de Outubro de 2025                                             ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🔧 CORREÇÕES APLICADAS
+══════════════════════════════════════════════════════════════════════════════
+
+✅ 1. Prioridade do hook ajustada
+   Arquivo: includes/admin/class-haklai-settings-page.php
+   Linha: 21
+   Mudança: add_action('admin_menu', [...], 20);
+
+✅ 2. Inicialização corrigida
+   Arquivo: includes/admin/class-haklai-settings-page.php
+   Linhas: 179-183
+   Mudança: Usar plugins_loaded hook
+
+✅ 3. Comentário explicativo
+   Arquivo: haklai-app-novo.php
+   Linhas: 227-228
+
+✅ 4. Sem erros de linting
+
+
+🧪 TESTE AGORA (1 MINUTO)
+══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  RECARREGAR PÁGINA DO ADMIN
+    Pressione: Ctrl + F5 (Windows)
+    Ou: Cmd + Shift + R (Mac)
+
+2️⃣  VERIFICAR MENU LATERAL
+    Menu: Haklai
+    
+    Você deve ver:
+    ├─ Membros
+    ├─ Células
+    ├─ Reuniões
+    ├─ Relatórios
+    └─ Configurações ← DEVE APARECER AQUI
+
+3️⃣  CLICAR EM "CONFIGURAÇÕES"
+    Deve abrir: admin.php?page=haklai-settings
+    
+    ❌ NÃO DEVE: Abrir página 404
+    ❌ NÃO DEVE: Abrir post/página
+    ✅ DEVE: Abrir interface de Importação/Exportação
+
+4️⃣  VERIFICAR CONTEÚDO DA PÁGINA
+    Você deve ver:
+    ✅ Header com gradiente roxo animado
+    ✅ Seção "Importação de Membros"
+    ✅ Seção "Exportação de Membros"
+    ✅ Seção "Informações do Sistema"
+
+
+📊 RESULTADO ESPERADO
+══════════════════════════════════════════════════════════════════════════════
+
+TELA DE CONFIGURAÇÕES:
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 🎨 CONFIGURAÇÕES DO SISTEMA HAKLAI                                     │
+│    Gerencie as configurações, importação e exportação de dados          │
+│                                                          👤 Seu Nome     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 📥 IMPORTAÇÃO E EXPORTAÇÃO DE DADOS                                    │
+│                                                                          │
+│ ┌───────────────────────────────────────────────────────────────────┐  │
+│ │ 📥 Importação de Membros                                          │  │
+│ │ • Baixe o template para garantir formato correto                 │  │
+│ │ • [Baixar Template CSV]                                           │  │
+│ │                                                                    │  │
+│ │ • Selecione um arquivo CSV ou Excel                              │  │
+│ │ • [Iniciar Importação]                                            │  │
+│ └───────────────────────────────────────────────────────────────────┘  │
+│                                                                          │
+│ ┌───────────────────────────────────────────────────────────────────┐  │
+│ │ 📤 Exportação de Membros                                          │  │
+│ │                                                                    │  │
+│ │ Filtros de Exportação:                                            │  │
+│ │ • Célula: [Todas] • Status: [Todos] • Nível: [Todos]            │  │
+│ │ • Batismo: [Todos] • Data De: [ ] • Data Até: [ ]               │  │
+│ │                                                                    │  │
+│ │ Formato: ○ CSV  ○ Excel                                          │  │
+│ │ [Exportar Membros]                                                │  │
+│ └───────────────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ ℹ️ INFORMAÇÕES DO SISTEMA                                               │
+│ • Versão Plugin: 2.0.0                                                  │
+│ • Total de Membros: X                                                   │
+│ • Total de Células: Y                                                   │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+🚨 SE AINDA DER ERRO
+══════════════════════════════════════════════════════════════════════════════
+
+OPÇÃO A: Desativar e Reativar Plugin
+─────────────────────────────────────────────────────────────────────────────
+WordPress Admin → Plugins → Haklai → Desativar
+Aguardar 2 segundos
+WordPress Admin → Plugins → Haklai → Ativar
+Testar novamente
+
+
+OPÇÃO B: Limpar Cache
+─────────────────────────────────────────────────────────────────────────────
+Se tiver plugin de cache:
+  → Limpar cache do plugin
+
+No navegador:
+  → Ctrl + Shift + Delete
+  → Limpar cache do navegador
+
+
+OPÇÃO C: Verificar Debug
+─────────────────────────────────────────────────────────────────────────────
+1. Ativar debug no wp-config.php:
+   define('WP_DEBUG', true);
+   define('WP_DEBUG_LOG', true);
+
+2. Acessar menu novamente
+
+3. Verificar: wp-content/debug.log
+
+
+OPÇÃO D: Verificar Manualmente
+─────────────────────────────────────────────────────────────────────────────
+1. Acessar diretamente via URL:
+   wp-admin/admin.php?page=haklai-settings
+
+2. Se abrir corretamente → Problema é só no menu
+3. Se der 404 → Problema na classe
+
+
+📋 INFORMAÇÕES TÉCNICAS
+══════════════════════════════════════════════════════════════════════════════
+
+SLUG DA PÁGINA:
+  haklai-settings
+
+URL COMPLETA:
+  http://seusite.com/wp-admin/admin.php?page=haklai-settings
+
+CAPABILITY:
+  manage_options (Administrador)
+
+HOOK:
+  admin_menu (prioridade 20)
+
+CLASSE:
+  Haklai_Settings_Page
+
+
+✅ CHECKLIST DE CORREÇÃO
+══════════════════════════════════════════════════════════════════════════════
+
+[✓] Prioridade do hook ajustada (20)
+[✓] Inicialização corrigida (plugins_loaded)
+[✓] Comentários explicativos adicionados
+[✓] Sem erros de linting
+[✓] Documentação criada
+[✓] Pronto para teste
+
+
+🎯 TESTE AGORA
+══════════════════════════════════════════════════════════════════════════════
+
+1. Ctrl + F5 no admin
+2. Menu Haklai → Configurações
+3. Deve abrir a página de Importação/Exportação
+4. Testar funcionalidades
+
+
+══════════════════════════════════════════════════════════════════════════════
+
+✅ CORREÇÃO APLICADA!
+
+Teste e me avise o resultado!
+
+══════════════════════════════════════════════════════════════════════════════
+
+Desenvolvido por: Ricardo Sarmento - https://linx.pt
+Data: 13 de Outubro de 2025
+
+══════════════════════════════════════════════════════════════════════════════
+

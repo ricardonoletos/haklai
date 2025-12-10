@@ -1,0 +1,80 @@
+/**
+ * Haklai Admin Styles
+ * Estilos para o painel administrativo do WordPress
+ */
+
+/* Estilos para preview de imagens */
+.haklai-image-preview {
+    max-width: 150px;
+    max-height: 150px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background: #fff;
+    display: none;
+}
+
+.haklai-image-preview.active {
+    display: block;
+}
+
+/* Botões de upload */
+.haklai-upload-button {
+    margin-left: 10px;
+}
+
+.haklai-remove-image {
+    margin-left: 5px;
+    color: #dc3545;
+}
+
+/* Meta boxes do Haklai */
+.haklai-meta-box {
+    padding: 10px;
+}
+
+.haklai-meta-box .form-table th {
+    padding: 15px 10px 15px 0;
+}
+
+.haklai-meta-box .form-table td {
+    padding: 15px 10px;
+}
+
+/* Campo com preview de imagem */
+.haklai-image-field {
+    position: relative;
+}
+
+.haklai-image-field .image-preview-wrapper {
+    margin-top: 10px;
+}
+
+.haklai-image-field .image-preview-wrapper img {
+    max-width: 150px;
+    max-height: 150px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background: #fff;
+}
+
+/* Mensagens de feedback */
+.haklai-notice {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-left: 4px solid #00a0d2;
+    background: #f7f7f7;
+}
+
+.haklai-notice.error {
+    border-left-color: #dc3232;
+}
+
+.haklai-notice.success {
+    border-left-color: #46b450;
+}
+
+.haklai-notice.warning {
+    border-left-color: #ffb900;
+}
+

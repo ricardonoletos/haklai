@@ -1,0 +1,528 @@
+/**
+ * Haklai Shortcodes V2 - Estilos específicos para templates V2
+ * 
+ * Projeto: Haklai Church — Plugin WordPress Modular
+ * Desenvolvido por: Ricardo Sarmento - https://linx.pt
+ * 
+ * Este arquivo complementa o haklai-design-system.css
+ */
+
+/* ========================================
+   CHECKPOINT V2
+   ======================================== */
+
+.haklai-checkpoint-v2 {
+    min-height: 100vh;
+    background-color: var(--haklai-bg-light);
+    font-family: var(--haklai-font-family);
+}
+
+.dark .haklai-checkpoint-v2 {
+    background-color: var(--haklai-bg-dark);
+}
+
+/* Header Sticky */
+.haklai-header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: var(--haklai-z-sticky);
+    background-color: var(--haklai-primary);
+    padding: var(--haklai-spacing-3) var(--haklai-spacing-4);
+    color: #ffffff;
+}
+
+.haklai-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.haklai-header-title {
+    font-size: var(--haklai-text-xl);
+    font-weight: var(--haklai-font-weight-bold);
+    margin: 0;
+}
+
+.haklai-header-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--haklai-radius-full);
+    object-fit: cover;
+}
+
+.haklai-header-subtitle {
+    margin-top: var(--haklai-spacing-1);
+    font-size: var(--haklai-text-sm);
+    opacity: 0.8;
+}
+
+/* Progress Indicator */
+.haklai-progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: var(--haklai-spacing-2);
+    padding: var(--haklai-spacing-4) 0;
+}
+
+.haklai-progress-dot {
+    width: 1.5rem;
+    height: 0.375rem;
+    background-color: var(--haklai-border-light);
+    border-radius: var(--haklai-radius-sm);
+    transition: background-color var(--haklai-transition-base);
+}
+
+.dark .haklai-progress-dot {
+    background-color: var(--haklai-border-dark);
+}
+
+.haklai-progress-dot.active {
+    background-color: var(--haklai-primary);
+}
+
+/* Main Content */
+.haklai-checkpoint-main {
+    padding: var(--haklai-spacing-4);
+}
+
+.haklai-section {
+    margin-bottom: var(--haklai-spacing-6);
+}
+
+.haklai-section-title {
+    font-size: var(--haklai-text-lg);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading-light);
+    margin-bottom: var(--haklai-spacing-3);
+}
+
+.dark .haklai-section-title {
+    color: var(--haklai-text-heading-dark);
+}
+
+/* Stats Grid */
+.haklai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--haklai-spacing-4);
+}
+
+@media (min-width: 768px) {
+    .haklai-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.haklai-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--haklai-spacing-4);
+    border: 1px solid var(--haklai-border-light);
+    border-radius: var(--haklai-radius-lg);
+    background-color: var(--haklai-bg-light);
+    transition: all var(--haklai-transition-base);
+}
+
+.dark .haklai-stat-card {
+    background-color: var(--haklai-bg-dark);
+    border-color: var(--haklai-border-dark);
+}
+
+.haklai-stat-card:hover {
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.haklai-stat-icon {
+    font-size: var(--haklai-text-2xl);
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+.haklai-stat-value {
+    font-size: var(--haklai-text-3xl);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading-light);
+    margin: 0;
+    line-height: 1;
+}
+
+.dark .haklai-stat-value {
+    color: var(--haklai-text-heading-dark);
+}
+
+.haklai-stat-label {
+    font-size: var(--haklai-text-sm);
+    color: var(--haklai-text-secondary-light);
+    margin-top: var(--haklai-spacing-1);
+    margin-bottom: 0;
+}
+
+.dark .haklai-stat-label {
+    color: var(--haklai-text-secondary-dark);
+}
+
+/* Controls Grid */
+.haklai-controls-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--haklai-spacing-4);
+}
+
+@media (min-width: 768px) {
+    .haklai-controls-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.haklai-search-container {
+    position: relative;
+}
+
+.haklai-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--haklai-bg-card-light);
+    border: 1px solid var(--haklai-border-light);
+    border-radius: var(--haklai-radius-sm);
+    margin-top: var(--haklai-spacing-1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: var(--haklai-z-dropdown);
+    display: none;
+}
+
+.dark .haklai-search-results {
+    background-color: var(--haklai-bg-card-dark);
+    border-color: var(--haklai-border-dark);
+}
+
+.haklai-search-results.show {
+    display: block;
+}
+
+.haklai-search-result-item {
+    padding: var(--haklai-spacing-2) var(--haklai-spacing-3);
+    cursor: pointer;
+    transition: background-color var(--haklai-transition-base);
+}
+
+.haklai-search-result-item:hover {
+    background-color: var(--haklai-bg-hover-light);
+}
+
+.dark .haklai-search-result-item:hover {
+    background-color: var(--haklai-bg-hover-dark);
+}
+
+/* Member List */
+.haklai-member-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--haklai-spacing-3);
+}
+
+.haklai-member-item {
+    display: flex;
+    align-items: center;
+    padding: var(--haklai-spacing-3);
+    border: 1px solid var(--haklai-border-light);
+    border-radius: var(--haklai-radius-lg);
+    background-color: var(--haklai-bg-light);
+    transition: all var(--haklai-transition-base);
+    cursor: pointer;
+    position: relative;
+}
+
+.dark .haklai-member-item {
+    background-color: var(--haklai-bg-dark);
+    border-color: var(--haklai-border-dark);
+}
+
+.haklai-member-item:hover {
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.haklai-member-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--haklai-radius-lg);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.haklai-member-avatar-placeholder {
+    width: 5rem;
+    height: 5rem;
+    border-radius: var(--haklai-radius-lg);
+    background-color: var(--haklai-primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-bold);
+    flex-shrink: 0;
+}
+
+.haklai-member-info {
+    flex: 1;
+    padding: 0 var(--haklai-spacing-4);
+}
+
+.haklai-member-name {
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading-light);
+    margin: 0 0 var(--haklai-spacing-1);
+}
+
+.dark .haklai-member-name {
+    color: var(--haklai-text-heading-dark);
+}
+
+.haklai-member-status {
+    font-size: var(--haklai-text-sm);
+    margin: 0;
+    font-weight: var(--haklai-font-weight-medium);
+}
+
+.haklai-member-status.success {
+    color: var(--haklai-success);
+}
+
+.haklai-member-status.danger {
+    color: var(--haklai-danger);
+}
+
+.haklai-member-indicator {
+    width: 0.5rem;
+    align-self: stretch;
+    border-radius: 0 var(--haklai-radius-sm) var(--haklai-radius-sm) 0;
+}
+
+.haklai-member-indicator.success {
+    background-color: var(--haklai-success);
+}
+
+.haklai-member-indicator.danger {
+    background-color: var(--haklai-danger);
+}
+
+/* Actions Bar */
+.haklai-actions-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--haklai-spacing-3);
+    justify-content: center;
+    padding: var(--haklai-spacing-4) 0;
+}
+
+.haklai-actions-bar .haklai-btn {
+    flex: 1;
+    min-width: 150px;
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .haklai-actions-bar {
+        flex-direction: column;
+    }
+    
+    .haklai-actions-bar .haklai-btn {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Reports List */
+.haklai-reports-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.haklai-report-item {
+    display: flex;
+    align-items: center;
+    padding: var(--haklai-spacing-4);
+    background-color: var(--haklai-bg-card-light);
+    border-radius: var(--haklai-radius-sm);
+    transition: background-color var(--haklai-transition-base);
+    cursor: pointer;
+}
+
+.dark .haklai-report-item {
+    background-color: var(--haklai-bg-card-dark);
+}
+
+.haklai-report-item:hover {
+    background-color: var(--haklai-bg-hover-light);
+}
+
+.dark .haklai-report-item:hover {
+    background-color: var(--haklai-bg-hover-dark);
+}
+
+.haklai-report-info {
+    flex: 1;
+    margin-left: var(--haklai-spacing-4);
+}
+
+.haklai-report-title {
+    font-weight: var(--haklai-font-weight-medium);
+    color: var(--haklai-text-heading-light);
+    margin: 0 0 var(--haklai-spacing-1);
+}
+
+.dark .haklai-report-title {
+    color: var(--haklai-text-heading-dark);
+}
+
+.haklai-report-date {
+    font-size: var(--haklai-text-sm);
+    color: var(--haklai-text-secondary-light);
+    margin: 0;
+}
+
+.dark .haklai-report-date {
+    color: var(--haklai-text-secondary-dark);
+}
+
+/* Empty State */
+.haklai-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--haklai-spacing-8);
+    text-align: center;
+}
+
+.haklai-empty-state .material-icons {
+    font-size: 3rem;
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+/* Chat Button Flutuante */
+.haklai-chat-button {
+    position: fixed;
+    bottom: 5rem;
+    right: var(--haklai-spacing-4);
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--haklai-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--haklai-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--haklai-shadow-lg);
+    cursor: pointer;
+    z-index: var(--haklai-z-fixed);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-chat-button:hover {
+    transform: scale(1.1);
+    box-shadow: var(--haklai-shadow-xl);
+}
+
+.haklai-chat-button .material-icons {
+    font-size: var(--haklai-text-3xl);
+}
+
+/* Bottom Navigation */
+.haklai-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--haklai-z-fixed);
+    background-color: var(--haklai-bg-light);
+    border-top: 1px solid var(--haklai-border-light);
+}
+
+.dark .haklai-bottom-nav {
+    background-color: var(--haklai-bg-dark);
+    border-color: var(--haklai-border-dark);
+}
+
+.haklai-bottom-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.haklai-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--haklai-spacing-1);
+    padding: var(--haklai-spacing-2);
+    color: var(--haklai-text-secondary-light);
+    text-decoration: none;
+    transition: color var(--haklai-transition-base);
+}
+
+.dark .haklai-nav-item {
+    color: var(--haklai-text-secondary-dark);
+}
+
+.haklai-nav-item.active {
+    color: var(--haklai-primary);
+}
+
+.haklai-nav-item .material-icons {
+    font-size: var(--haklai-text-2xl);
+}
+
+.haklai-nav-label {
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-medium);
+}
+
+.haklai-nav-item.active .haklai-nav-label {
+    font-weight: var(--haklai-font-weight-semibold);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .haklai-header-sticky {
+        padding: var(--haklai-spacing-2) var(--haklai-spacing-3);
+    }
+    
+    .haklai-header-title {
+        font-size: var(--haklai-text-lg);
+    }
+    
+    .haklai-checkpoint-main {
+        padding: var(--haklai-spacing-3);
+    }
+    
+    .haklai-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--haklai-spacing-2);
+    }
+    
+    .haklai-stat-card {
+        padding: var(--haklai-spacing-3);
+    }
+    
+    .haklai-stat-value {
+        font-size: var(--haklai-text-2xl);
+    }
+    
+    .haklai-member-avatar,
+    .haklai-member-avatar-placeholder {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+    .haklai-chat-button {
+        width: 3rem;
+        height: 3rem;
+        bottom: 4.5rem;
+    }
+}
+

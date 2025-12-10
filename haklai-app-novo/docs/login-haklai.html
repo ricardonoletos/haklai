@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haklai App - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIÁVEIS CSS - Design System Haklai ===== */
+        :root {
+            /* Cores principais - Esquema monocromático */
+            --primary-color: #ffffff;
+            --secondary-color: #5a1a5d;
+            --accent-color: #fe1515;
+            --danger-color: #fe1515;
+            --success-color: #2faf14;
+            --info-color: #6a2a6d;
+            --warning-color: #9a3a9d;
+            
+            /* Cores de texto */
+            --text-primary: #3f1042;
+            --text-secondary: #5a1a5d;
+            --text-muted: #7d2a80;
+            --text-light: #9a3a9d;
+            
+            /* Cores de fundo */
+            --bg-primary: #f8f5ff;
+            --bg-secondary: #f0ebff;
+            --bg-tertiary: #e8e0ff;
+            --bg-dark: #3f1042;
+            
+            /* Bordas */
+            --border-color: #d4c7ff;
+            --border-radius: 16px;
+            --border-radius-sm: 12px;
+            --border-radius-lg: 20px;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 10px rgba(63, 16, 66, 0.1);
+            --shadow-md: 0 4px 20px rgba(63, 16, 66, 0.08);
+            --shadow-lg: 0 8px 30px rgba(63, 16, 66, 0.12);
+            --shadow-xl: 0 20px 60px rgba(63, 16, 66, 0.2);
+            
+            /* Tipografia */
+            --font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            
+            /* Espaçamentos */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            
+            /* Transições */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== CONTAINER DE LOGIN COM EFEITO ESTELAR ===== */
+        .haklai-login-container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #3f1042 0%, #5a1a5d 50%, #6a2a6d 100%);
+            overflow: hidden;
+        }
+
+        /* Efeito Estelar - Canvas */
+        #stars-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Efeito Estelar - CSS Fallback */
+        .haklai-login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(2px 2px at 90% 40%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.3), transparent);
+            background-size: 200% 200%;
+            animation: stars 20s linear infinite;
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes stars {
+            0% { 
+                background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%, 50% 50%, 0% 50%; 
+            }
+            100% { 
+                background-position: 200% 200%, -100% 200%, 200% -100%, -100% -100%, 150% 150%, 200% 50%; 
+            }
+        }
+
+        /* Card de Login */
+        .haklai-login-card {
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow-xl);
+            border: none;
+            border-radius: var(--border-radius-lg);
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .haklai-login-card .card-body {
+            padding: 3rem;
+        }
+
+        /* Logo e Texto Flutuante */
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-logo {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            display: block;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(90, 26, 93, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(90, 26, 93, 0.6));
+            }
+        }
+
+        .login-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .login-subtitle {
+            font-size: var(--font-size-base);
+            color: var(--text-muted);
+            margin: 0;
+            animation: floatText 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes floatText {
+            0%, 100% {
+                transform: translateY(0px);
+                opacity: 0.85;
+            }
+            50% {
+                transform: translateY(-8px);
+                opacity: 1;
+            }
+        }
+
+        /* Formulário */
+        .haklai-login-form {
+            width: 100%;
+        }
+
+        .haklai-login-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .haklai-login-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: var(--font-size-sm);
+            letter-spacing: 0.3px;
+        }
+
+        .haklai-login-form input[type="text"],
+        .haklai-login-form input[type="password"] {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-base);
+            transition: var(--transition-base);
+            background-color: #ffffff;
+            color: var(--text-primary);
+            font-family: var(--font-family);
+        }
+
+        .haklai-login-form input[type="text"]:focus,
+        .haklai-login-form input[type="password"]:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 4px rgba(90, 26, 93, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .haklai-login-form .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .haklai-login-form .form-check-label {
+            font-weight: 400;
+            cursor: pointer;
+            font-size: var(--font-size-sm);
+            margin-bottom: 0;
+        }
+
+        .haklai-login-form input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        /* Botão de Login */
+        .btn-login {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--info-color) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-md);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #6a2a6d 0%, #7d2a80 100%);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        /* Link Esqueceu Senha */
+        .forgot-password {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            transition: var(--transition-base);
+        }
+
+        .forgot-password a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Divider */
+        .login-divider {
+            margin: 2rem 0;
+            border: none;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Alert Info */
+        .login-info {
+            background: linear-gradient(135deg, rgba(106, 42, 109, 0.1) 0%, rgba(125, 42, 128, 0.1) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            padding: 1rem;
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .login-info i {
+            color: var(--info-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 576px) {
+            .haklai-login-card .card-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .login-logo {
+                font-size: 2.5rem;
+            }
+
+            .login-title {
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .haklai-login-card {
+                background-color: rgba(31, 41, 55, 0.98);
+            }
+
+            .haklai-login-form input[type="text"],
+            .haklai-login-form input[type="password"] {
+                background-color: #374151;
+                border-color: #4b5563;
+                color: #f3f4f6;
+            }
+
+            .login-title {
+                color: #f3f4f6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="haklai-login-container">
+        <!-- Canvas para efeito estelar -->
+        <canvas id="stars-canvas"></canvas>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="card haklai-login-card">
+                        <div class="card-body">
+                            <!-- Logo e Título -->
+                            <div class="login-header">
+                                <i class="fas fa-church login-logo"></i>
+                                <h2 class="login-title">Haklai Church</h2>
+                                <p class="login-subtitle">Faça login para acessar o Checkpoint</p>
+                            </div>
+
+                            <!-- Formulário de Login -->
+                            <form class="haklai-login-form" method="post" action="#">
+                                <div class="form-group">
+                                    <label for="user_login">
+                                        <i class="fas fa-user"></i> Usuário ou E-mail
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="user_login" 
+                                        name="log" 
+                                        class="form-control" 
+                                        placeholder="Digite seu usuário ou e-mail"
+                                        required
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="user_pass">
+                                        <i class="fas fa-lock"></i> Senha
+                                    </label>
+                                    <input 
+                                        type="password" 
+                                        id="user_pass" 
+                                        name="pwd" 
+                                        class="form-control" 
+                                        placeholder="Digite sua senha"
+                                        required
+                                    />
+                                </div>
+
+                                <div class="form-check">
+                                    <input 
+                                        type="checkbox" 
+                                        id="rememberme" 
+                                        name="rememberme" 
+                                        value="forever"
+                                        class="form-check-input"
+                                    />
+                                    <label class="form-check-label" for="rememberme">
+                                        Lembrar-me
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="btn btn-login">
+                                    <i class="fas fa-sign-in-alt"></i> Entrar
+                                </button>
+                            </form>
+
+                            <!-- Link Esqueceu Senha -->
+                            <div class="forgot-password">
+                                <a href="#">
+                                    <i class="fas fa-question-circle"></i> Esqueceu sua senha?
+                                </a>
+                            </div>
+
+                            <hr class="login-divider">
+
+                            <!-- Info -->
+                            <div class="login-info">
+                                <i class="fas fa-info-circle"></i>
+                                Use suas credenciais de líder para acessar o sistema.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efeito Estelar com Canvas
+        (function() {
+            const canvas = document.getElementById('stars-canvas');
+            const ctx = canvas.getContext('2d');
+            const stars = [];
+            const numStars = 150;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            // Criar estrelas
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5 + 0.5,
+                    opacity: Math.random() * 0.8 + 0.2,
+                    speed: Math.random() * 0.3 + 0.1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'white';
+
+                stars.forEach(star => {
+                    star.y += star.speed;
+                    if (star.y > canvas.height) {
+                        star.y = 0;
+                        star.x = Math.random() * canvas.width;
+                    }
+
+                    ctx.globalAlpha = star.opacity;
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

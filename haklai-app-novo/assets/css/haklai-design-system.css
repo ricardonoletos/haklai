@@ -1,0 +1,1865 @@
+/**
+ * Haklai Design System v3.0 - CSS UNIFICADO
+ * Baseado no manual completo: haklai-design-system-manual.html
+ * 
+ * Projeto: Haklai Church — Plugin WordPress Modular
+ * Desenvolvido por: Ricardo Sarmento - https://linx.pt
+ * 
+ * Este arquivo consolida TODOS os estilos do plugin:
+ * - Design System base (tokens, componentes)
+ * - Estilos específicos dos shortcodes (Checkpoint, Relatórios, etc.)
+ * - Utilitários (notifications, loading, upload progress, etc.)
+ * - Responsividade e tema dark
+ * 
+ * Características:
+ * - CSS completamente unificado em um único arquivo
+ * - Sem duplicações de código
+ * - Sem !important (exceto casos específicos)
+ * - Totalmente responsivo
+ * - Acessível (WCAG)
+ * 
+ * Arquivos consolidados:
+ * - haklai-design-system.css (base)
+ * - haklai-shortcodes.css (shortcodes específicos)
+ * - haklai-main.css (utilitários e estilos únicos)
+ */
+
+/* ========================================
+   DESIGN TOKENS (VARIÁVEIS CSS)
+   ======================================== */
+:root {
+    /* === COR PRIMÁRIA (Gradiente Azul/Roxo) === */
+    --haklai-primary: #667eea;
+    --haklai-primary-dark: #764ba2;
+    --haklai-primary-hover: #5568d3;
+    --haklai-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --haklai-primary-alpha-10: rgba(102, 126, 234, 0.1);
+    --haklai-primary-alpha-20: rgba(102, 126, 234, 0.2);
+    
+    /* === CORES DE ESTADO === */
+    --haklai-success: #36B37E;
+    --haklai-success-light: #86efac;
+    --haklai-success-bg: #dcfce7;
+    --haklai-success-text: #15803d;
+    
+    --haklai-danger: #FF5630;
+    --haklai-danger-light: #fca5a5;
+    --haklai-danger-bg: #fee2e2;
+    --haklai-danger-text: #991b1b;
+    
+    --haklai-warning: #FFAB00;
+    --haklai-warning-light: #fde047;
+    --haklai-warning-bg: #fef9c3;
+    --haklai-warning-text: #713f12;
+    
+    --haklai-info: #2b8cce;
+    --haklai-info-light: #93c5fd;
+    --haklai-info-bg: #dbeafe;
+    --haklai-info-text: #1e40af;
+    
+    /* === BACKGROUNDS === */
+    --haklai-bg-primary: #f7fafc;
+    --haklai-bg-secondary: #edf2f7;
+    --haklai-bg-card: #ffffff;
+    --haklai-bg-input: #f1f5f9;
+    --haklai-body-gradient: linear-gradient(135deg, #f8f5ff 0%, #f0ebff 100%);
+    --haklai-body-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --haklai-header-radial: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    --haklai-header-radial-dark: radial-gradient(circle, rgba(15,23,42,0.35) 0%, transparent 70%);
+    --haklai-overlay-glass: rgba(255,255,255,0.15);
+    --haklai-overlay-glass-strong: rgba(255,255,255,0.2);
+    --haklai-overlay-glass-dark: rgba(30,41,59,0.6);
+    --haklai-backdrop-scrim: rgba(0, 0, 0, 0.5);
+    --haklai-upload-scrim: rgba(0, 0, 0, 0.8);
+    --haklai-floating-button-bg: rgba(155, 145, 151, 0.9);
+    --haklai-progress-gradient: linear-gradient(90deg, #667eea 0%, #4b89a2 100%);
+    
+    /* === NEUTROS E SUPORTES === */
+    --haklai-white: #ffffff;
+    --haklai-black: #0f172a;
+    --haklai-neutral-50: #f8fafc;
+    --haklai-neutral-100: #e5e7eb;
+    --haklai-neutral-200: #cbd5e1;
+    --haklai-neutral-300: #94a3b8;
+    --haklai-neutral-800: #1e293b;
+    --haklai-neutral-900: #0f172a;
+    
+    --haklai-color-on-primary: #ffffff;
+    --haklai-color-on-secondary: #0f172a;
+    --haklai-color-on-overlay: #ffffff;
+    
+    /* === TEXTO === */
+    --haklai-text-primary: #334155;
+    --haklai-text-secondary: #64748b;
+    --haklai-text-tertiary: #94a3b8;
+    --haklai-text-heading: #1e293b;
+    
+    /* === BORDAS === */
+    --haklai-border: #e2e8f0;
+    --haklai-border-dark: #cbd5e1;
+    
+    /* === BORDER RADIUS === */
+    --haklai-radius-xs: 4px;
+    --haklai-radius-sm: 8px;
+    --haklai-radius-md: 12px;
+    --haklai-radius-lg: 16px;
+    --haklai-radius-xl: 20px;
+    --haklai-radius-full: 9999px;
+    
+    /* === SOMBRAS === */
+    --haklai-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --haklai-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --haklai-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --haklai-shadow-lg-dark: 0 18px 35px -10px rgba(15, 23, 42, 0.6);
+    --haklai-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    
+    /* === TIPOGRAFIA === */
+    --haklai-font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    --haklai-font-family-alt: 'Manrope', 'Inter', sans-serif;
+    
+    --haklai-font-weight-light: 300;
+    --haklai-font-weight-normal: 400;
+    --haklai-font-weight-medium: 500;
+    --haklai-font-weight-semibold: 600;
+    --haklai-font-weight-bold: 700;
+    --haklai-font-weight-extrabold: 800;
+    
+    --haklai-text-xs: 0.75rem;    /* 12px */
+    --haklai-text-sm: 0.875rem;   /* 14px */
+    --haklai-text-base: 1rem;     /* 16px */
+    --haklai-text-lg: 1.125rem;   /* 18px */
+    --haklai-text-xl: 1.25rem;    /* 20px */
+    --haklai-text-2xl: 1.5rem;    /* 24px */
+    --haklai-text-3xl: 1.875rem;  /* 30px */
+    --haklai-text-4xl: 2.25rem;   /* 36px */
+    
+    --haklai-leading-normal: 1.5;
+    --haklai-leading-relaxed: 1.75;
+    
+    /* === ESPAÇAMENTOS === */
+    --haklai-spacing-1: 0.25rem;  /* 4px */
+    --haklai-spacing-2: 0.5rem;   /* 8px */
+    --haklai-spacing-3: 0.75rem;  /* 12px */
+    --haklai-spacing-4: 1rem;     /* 16px */
+    --haklai-spacing-6: 1.5rem;   /* 24px */
+    --haklai-spacing-8: 2rem;     /* 32px */
+    
+    /* === TRANSIÇÕES === */
+    --haklai-transition-fast: 0.15s ease;
+    --haklai-transition-base: 0.2s ease;
+    --haklai-transition-slow: 0.3s ease;
+}
+
+/* ========================================
+   RESET E BASE
+   ======================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--haklai-font-family);
+    background: var(--haklai-body-gradient);
+    color: var(--haklai-text-primary);
+    line-height: var(--haklai-leading-normal);
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================================
+   COMPONENTES: BOTÕES
+   ======================================== */
+.haklai-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--haklai-spacing-2);
+    padding: var(--haklai-spacing-3) var(--haklai-spacing-6);
+    font-family: var(--haklai-font-family);
+    font-size: var(--haklai-text-sm);
+    font-weight: var(--haklai-font-weight-semibold);
+    line-height: var(--haklai-leading-normal);
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    border-radius: var(--haklai-radius-md);
+    transition: all var(--haklai-transition-base);
+    min-height: 40px;
+}
+
+.haklai-btn:focus {
+    outline: 2px solid var(--haklai-primary);
+    outline-offset: 2px;
+}
+
+.haklai-btn:disabled,
+.haklai-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.haklai-btn-primary {
+    background: var(--haklai-primary-gradient);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.haklai-btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.haklai-btn-secondary {
+    background: var(--haklai-neutral-100);
+    color: var(--haklai-text-primary);
+}
+
+.haklai-btn-secondary:hover:not(:disabled) {
+    background: var(--haklai-neutral-200);
+}
+
+.haklai-btn-success {
+    background: var(--haklai-success);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-btn-success:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.haklai-btn-danger {
+    background: var(--haklai-danger);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-btn-danger:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.haklai-btn-warning {
+    background: var(--haklai-warning);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-btn-warning:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.haklai-btn-outline {
+    background: transparent;
+    border: 2px solid var(--haklai-primary);
+    color: var(--haklai-primary);
+}
+
+.haklai-btn-outline:hover:not(:disabled) {
+    background: var(--haklai-primary);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-btn-sm {
+    padding: var(--haklai-spacing-2) var(--haklai-spacing-4);
+    font-size: var(--haklai-text-xs);
+    min-height: 32px;
+}
+
+.haklai-btn-lg {
+    padding: var(--haklai-spacing-4) var(--haklai-spacing-8);
+    font-size: var(--haklai-text-base);
+    min-height: 48px;
+}
+
+/* ========================================
+   COMPONENTES: FORMULÁRIOS
+   ======================================== */
+.haklai-form-group {
+    margin-bottom: var(--haklai-spacing-6);
+}
+
+.haklai-label {
+    display: block;
+    font-size: var(--haklai-text-sm);
+    font-weight: var(--haklai-font-weight-medium);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+.haklai-label .required {
+    color: var(--haklai-danger);
+    margin-left: var(--haklai-spacing-1);
+}
+
+.haklai-input,
+.haklai-select,
+.haklai-textarea {
+    width: 100%;
+    padding: var(--haklai-spacing-3);
+    font-family: var(--haklai-font-family);
+    font-size: var(--haklai-text-base);
+    color: var(--haklai-text-heading);
+    background-color: var(--haklai-bg-input);
+    border: 2px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-sm);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-input:focus,
+.haklai-select:focus,
+.haklai-textarea:focus {
+    outline: none;
+    border-color: var(--haklai-primary);
+    box-shadow: 0 0 0 3px var(--haklai-primary-alpha-10);
+    background-color: var(--haklai-white);
+}
+
+.haklai-input:invalid,
+.haklai-select:invalid,
+.haklai-textarea:invalid {
+    border-color: var(--haklai-danger);
+}
+
+.haklai-input::placeholder {
+    color: var(--haklai-text-tertiary);
+}
+
+.haklai-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.haklai-form-help {
+    font-size: var(--haklai-text-sm);
+    color: var(--haklai-text-secondary);
+    margin-top: var(--haklai-spacing-2);
+}
+
+.haklai-checkbox,
+.haklai-radio {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--haklai-primary);
+    cursor: pointer;
+}
+
+.haklai-checkbox-label,
+.haklai-radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    font-size: var(--haklai-text-base);
+    color: var(--haklai-text-primary);
+    cursor: pointer;
+    margin-right: var(--haklai-spacing-4);
+}
+
+/* ========================================
+   COMPONENTES: ALERTAS
+   ======================================== */
+.haklai-alert {
+    padding: var(--haklai-spacing-4);
+    border-radius: var(--haklai-radius-md);
+    margin-bottom: var(--haklai-spacing-4);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--haklai-spacing-3);
+    border-left: 4px solid;
+}
+
+.haklai-alert-success {
+    background: var(--haklai-success-bg);
+    color: var(--haklai-success-text);
+    border-color: var(--haklai-success);
+}
+
+.haklai-alert-danger {
+    background: var(--haklai-danger-bg);
+    color: var(--haklai-danger-text);
+    border-color: var(--haklai-danger);
+}
+
+.haklai-alert-warning {
+    background: var(--haklai-warning-bg);
+    color: var(--haklai-warning-text);
+    border-color: var(--haklai-warning);
+}
+
+.haklai-alert-info {
+    background: var(--haklai-info-bg);
+    color: var(--haklai-info-text);
+    border-color: var(--haklai-info);
+}
+
+/* ========================================
+   COMPONENTES: CARDS
+   ======================================== */
+.haklai-card {
+    background: var(--haklai-bg-card);
+    border: 1px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-6);
+    box-shadow: var(--haklai-shadow-md);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-card:hover {
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.haklai-card-header {
+    font-size: var(--haklai-text-xl);
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-4);
+    padding-bottom: var(--haklai-spacing-4);
+    border-bottom: 1px solid var(--haklai-border);
+}
+
+.haklai-card-body {
+    color: var(--haklai-text-primary);
+}
+
+.haklai-card-footer {
+    margin-top: var(--haklai-spacing-4);
+    padding-top: var(--haklai-spacing-4);
+    border-top: 1px solid var(--haklai-border);
+}
+
+/* ========================================
+   COMPONENTES: BADGES
+   ======================================== */
+.haklai-badge {
+    display: inline-block;
+    padding: var(--haklai-spacing-1) var(--haklai-spacing-3);
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-semibold);
+    border-radius: var(--haklai-radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+}
+
+.haklai-badge-primary {
+    background: var(--haklai-primary);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-badge-success {
+    background: var(--haklai-success-bg);
+    color: var(--haklai-success-text);
+}
+
+.haklai-badge-danger {
+    background: var(--haklai-danger-bg);
+    color: var(--haklai-danger-text);
+}
+
+.haklai-badge-warning {
+    background: var(--haklai-warning-bg);
+    color: var(--haklai-warning-text);
+}
+
+/* ========================================
+   COMPONENTES: TABELAS
+   ======================================== */
+.haklai-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    overflow: hidden;
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.haklai-table thead {
+    background: var(--haklai-primary-gradient);
+    color: var(--haklai-color-on-primary);
+}
+
+.haklai-table th {
+    padding: var(--haklai-spacing-4);
+    text-align: left;
+    font-weight: var(--haklai-font-weight-semibold);
+    font-size: var(--haklai-text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.haklai-table td {
+    padding: var(--haklai-spacing-4);
+    border-bottom: 1px solid var(--haklai-border);
+}
+
+.haklai-table tbody tr:hover {
+    background: var(--haklai-bg-primary);
+}
+
+.haklai-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================
+   COMPONENTES: MODAL
+   ======================================== */
+.haklai-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--haklai-backdrop-scrim);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.haklai-modal-overlay.active {
+    display: flex;
+}
+
+.haklai-modal {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--haklai-shadow-xl);
+}
+
+.haklai-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--haklai-spacing-6);
+    padding-bottom: var(--haklai-spacing-4);
+    border-bottom: 1px solid var(--haklai-border);
+}
+
+.haklai-modal-title {
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin: 0;
+}
+
+.haklai-modal-close {
+    background: none;
+    border: none;
+    font-size: var(--haklai-text-2xl);
+    color: var(--haklai-text-secondary);
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--haklai-radius-sm);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-modal-close:hover {
+    background: var(--haklai-bg-primary);
+    color: var(--haklai-text-primary);
+}
+
+/* ========================================
+   COMPONENTES: PAGINAÇÃO
+   ======================================== */
+.haklai-pagination {
+    display: flex;
+    gap: var(--haklai-spacing-2);
+    align-items: center;
+    justify-content: center;
+    margin: var(--haklai-spacing-6) 0;
+}
+
+.haklai-pagination-item {
+    padding: var(--haklai-spacing-2) var(--haklai-spacing-4);
+    border: 1px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-sm);
+    background: var(--haklai-bg-card);
+    color: var(--haklai-text-primary);
+    text-decoration: none;
+    transition: all var(--haklai-transition-base);
+    min-width: 40px;
+    text-align: center;
+}
+
+.haklai-pagination-item:hover:not(.active):not(.disabled) {
+    background: var(--haklai-primary);
+    color: var(--haklai-color-on-primary);
+    border-color: var(--haklai-primary);
+}
+
+.haklai-pagination-item.active {
+    background: var(--haklai-primary-gradient);
+    color: var(--haklai-color-on-primary);
+    border-color: var(--haklai-primary);
+}
+
+.haklai-pagination-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   BACKGROUNDS E CONTAINERS
+   ======================================== */
+.haklai-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--haklai-spacing-8);
+}
+
+.haklai-bg-primary {
+    background: var(--haklai-bg-primary);
+}
+
+.haklai-bg-secondary {
+    background: var(--haklai-bg-secondary);
+}
+
+.haklai-bg-gradient {
+    background: var(--haklai-primary-gradient);
+}
+
+.haklai-header {
+    background: var(--haklai-primary-gradient);
+    color: var(--haklai-color-on-primary);
+    padding: var(--haklai-spacing-8);
+    border-radius: var(--haklai-radius-lg);
+    margin-bottom: var(--haklai-spacing-6);
+}
+
+/* ========================================
+   UTILITÁRIOS
+   ======================================== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-4 { margin-bottom: var(--haklai-spacing-4); }
+.mb-6 { margin-bottom: var(--haklai-spacing-6); }
+.mt-4 { margin-top: var(--haklai-spacing-4); }
+.mt-6 { margin-top: var(--haklai-spacing-6); }
+
+.d-flex { display: flex; }
+.align-items-center { align-items: center; }
+.justify-content-between { justify-content: space-between; }
+.gap-2 { gap: var(--haklai-spacing-2); }
+.gap-4 { gap: var(--haklai-spacing-4); }
+
+/* ========================================
+   SHORTCODES ESPECÍFICOS
+   ======================================== */
+
+/* Login e Acesso Negado */
+.haklai-login-container {
+    padding: var(--haklai-spacing-8) var(--haklai-spacing-4);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.haklai-login-card {
+    box-shadow: var(--haklai-shadow-lg);
+    border: none;
+    border-radius: var(--haklai-radius-lg);
+    background-color: var(--haklai-bg-card);
+}
+
+.haklai-login-card .card-body {
+    padding: var(--haklai-spacing-8);
+}
+
+.haklai-login-card .fa-user-circle {
+    color: var(--haklai-success);
+}
+
+#haklai_loginform {
+    width: 100%;
+}
+
+#haklai_loginform p {
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+#haklai_loginform label {
+    display: block;
+    font-weight: var(--haklai-font-weight-semibold);
+    margin-bottom: var(--haklai-spacing-2);
+    color: var(--haklai-text-heading);
+    font-size: var(--haklai-text-sm);
+}
+
+#haklai_loginform input[type="text"],
+#haklai_loginform input[type="password"] {
+    width: 100%;
+    padding: var(--haklai-spacing-3);
+    border: 2px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-sm);
+    font-size: var(--haklai-text-base);
+    transition: all var(--haklai-transition-base);
+    background-color: var(--haklai-bg-input);
+    color: var(--haklai-text-heading);
+    font-family: var(--haklai-font-family);
+}
+
+#haklai_loginform input[type="text"]:focus,
+#haklai_loginform input[type="password"]:focus {
+    outline: none;
+    border-color: var(--haklai-success);
+    box-shadow: 0 0 0 3px var(--haklai-primary-alpha-10);
+    background-color: var(--haklai-bg-card);
+}
+
+#haklai_loginform .login-remember {
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    margin-top: var(--haklai-spacing-3);
+}
+
+#haklai_loginform .login-remember label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: var(--haklai-font-weight-normal);
+    cursor: pointer;
+    font-size: var(--haklai-text-sm);
+}
+
+#haklai_loginform input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    margin-right: var(--haklai-spacing-2);
+    cursor: pointer;
+    accent-color: var(--haklai-primary);
+}
+
+#haklai_loginform .login-submit {
+    margin-top: var(--haklai-spacing-6);
+    margin-bottom: 0;
+}
+
+#haklai_loginform input[type="submit"] {
+    width: 100%;
+    padding: var(--haklai-spacing-3) var(--haklai-spacing-6);
+    background: var(--haklai-success);
+    color: var(--haklai-color-on-primary);
+    border: none;
+    border-radius: var(--haklai-radius-md);
+    font-size: var(--haklai-text-base);
+    font-weight: var(--haklai-font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--haklai-transition-base);
+    font-family: var(--haklai-font-family);
+}
+
+#haklai_loginform input[type="submit"]:hover {
+    background: var(--haklai-success);
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+#haklai_loginform input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.haklai-login-card .text-muted {
+    color: var(--haklai-text-secondary);
+    text-decoration: none;
+    transition: color var(--haklai-transition-base);
+}
+
+.haklai-login-card .text-muted:hover {
+    color: var(--haklai-success);
+}
+
+.haklai-login-card .alert-info {
+    background-color: var(--haklai-info-bg);
+    border-color: var(--haklai-info);
+    color: var(--haklai-info-text);
+    border-radius: var(--haklai-radius-md);
+}
+
+.haklai-login-card .login-error {
+    background-color: var(--haklai-danger-bg);
+    border: 1px solid var(--haklai-danger);
+    color: var(--haklai-danger-text);
+    padding: var(--haklai-spacing-3);
+    border-radius: var(--haklai-radius-md);
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.haklai-access-denied {
+    padding: var(--haklai-spacing-8) var(--haklai-spacing-4);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.haklai-access-denied .card {
+    box-shadow: var(--haklai-shadow-lg);
+    border: none;
+    border-radius: var(--haklai-radius-lg);
+}
+
+.haklai-access-denied .fa-lock {
+    color: var(--haklai-text-secondary);
+}
+
+/* Checkpoint */
+.checkpoint-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-lg);
+    box-shadow: var(--haklai-shadow-xl);
+    overflow: hidden;
+}
+
+.checkpoint-header {
+    background: var(--haklai-primary-gradient);
+    color: var(--haklai-color-on-primary);
+    padding: var(--haklai-spacing-8);
+    position: relative;
+    overflow: hidden;
+}
+
+.checkpoint-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--haklai-header-radial);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.checkpoint-header .header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.checkpoint-header .header-content h1 {
+    font-size: var(--haklai-text-3xl);
+    font-weight: var(--haklai-font-weight-extrabold);
+    margin: 0;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    letter-spacing: -1px;
+}
+
+.checkpoint-header .header-content .subtitle {
+    font-size: var(--haklai-text-lg);
+    opacity: 0.9;
+    margin-top: var(--haklai-spacing-4);
+    font-weight: var(--haklai-font-weight-light);
+}
+
+.checkpoint-content {
+    padding: var(--haklai-spacing-8);
+}
+
+.stats-dashboard {
+    background: var(--haklai-bg-primary);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    margin-bottom: var(--haklai-spacing-8);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--haklai-spacing-6);
+}
+
+.stat-card {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-6);
+    text-align: center;
+    box-shadow: var(--haklai-shadow-md);
+    border: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.stat-card .icon {
+    width: 50px;
+    height: 50px;
+    background: var(--haklai-primary-gradient);
+    border-radius: var(--haklai-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--haklai-spacing-4);
+    color: var(--haklai-color-on-primary);
+    font-size: var(--haklai-text-2xl);
+}
+
+.stat-card .number {
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-extrabold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+.stat-card .label {
+    color: var(--haklai-text-secondary);
+    font-size: var(--haklai-text-sm);
+    text-transform: uppercase;
+    font-weight: var(--haklai-font-weight-semibold);
+    letter-spacing: 1px;
+}
+
+.controls-panel {
+    background: var(--haklai-bg-secondary);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    margin-bottom: var(--haklai-spacing-8);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--haklai-spacing-6);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-label {
+    font-size: var(--haklai-text-sm);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.members-section {
+    background: var(--haklai-bg-secondary);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    margin-bottom: var(--haklai-spacing-8);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--haklai-spacing-6);
+}
+
+.member-card {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-6);
+    text-align: center;
+    box-shadow: var(--haklai-shadow-md);
+    border: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.member-card.present {
+    border-color: var(--haklai-success);
+    background: var(--haklai-success-bg);
+}
+
+.member-card.absent {
+    border-color: var(--haklai-danger);
+    background: var(--haklai-danger-bg);
+}
+
+.member-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--haklai-radius-full);
+    object-fit: cover;
+    margin: 0 auto var(--haklai-spacing-4);
+    border: 3px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+}
+
+.member-card.present .member-photo {
+    border-color: var(--haklai-success);
+}
+
+.member-card.absent .member-photo {
+    border-color: var(--haklai-danger);
+}
+
+.member-name {
+    font-size: var(--haklai-text-lg);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+.member-role {
+    font-size: var(--haklai-text-sm);
+    color: var(--haklai-text-secondary);
+    text-transform: uppercase;
+    font-weight: var(--haklai-font-weight-semibold);
+    letter-spacing: 1px;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.btn-edit-member {
+    position: absolute;
+    top: var(--haklai-spacing-2);
+    right: var(--haklai-spacing-2);
+    background: var(--haklai-floating-button-bg);
+    border: 1px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-full);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--haklai-transition-base);
+    color: var(--haklai-bg-card);
+    z-index: 10;
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.btn-edit-member:hover {
+    background: var(--haklai-primary);
+    color: var(--haklai-color-on-primary);
+    transform: scale(1.1);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.btn-edit-member i {
+    font-size: var(--haklai-text-sm);
+}
+
+.section-title {
+    color: var(--haklai-text-heading);
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-bold);
+    margin-bottom: var(--haklai-spacing-6);
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--haklai-spacing-2) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+    border-radius: 2px;
+}
+
+/* Toggle Switch */
+.haklai-toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--haklai-spacing-4);
+    cursor: pointer;
+}
+
+.haklai-toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.haklai-toggle-slider {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: var(--haklai-neutral-200);
+    border-radius: 30px;
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: var(--haklai-white);
+    border-radius: var(--haklai-radius-full);
+    transition: all var(--haklai-transition-base);
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.haklai-toggle-switch input:checked + .haklai-toggle-slider {
+    background: var(--haklai-success);
+}
+
+.haklai-toggle-switch input:checked + .haklai-toggle-slider::before {
+    transform: translateX(30px);
+}
+
+.haklai-toggle-label {
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading);
+}
+
+.haklai-theme-toggle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 1.5em 1.5em ; /* var(--haklai-spacing-6) var(--haklai-spacing-6) 0; */
+    gap: var(--haklai-spacing-3);
+}
+
+.haklai-theme-toggspacing-2);
+}
+
+.haklai-theme-toggle .haklai-toggle-label {
+    font-size: var(--haklai-text-sm);
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--haklai-text-heading);
+}
+
+@media (max-width: 768px) {
+    .haklai-theme-toggle {
+        justify-content: center;
+        margin: var(--haklai-spacing-3) 0 0;
+    }
+}
+
+/* Formações Checkboxes */
+.haklai-formacoes-fieldset {
+    border: 1px solid var(--haklai-border);
+    padding: var(--haklai-spacing-4);
+    border-radius: var(--haklai-radius-sm);
+    background: var(--haklai-bg-primary);
+}
+
+.haklai-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    padding: var(--haklai-spacing-2) 0;
+    cursor: pointer;
+    transition: background var(--haklai-transition-fast);
+}
+
+.haklai-checkbox-label:hover {
+    background: var(--haklai-bg-secondary);
+    padding-left: var(--haklai-spacing-1);
+    border-radius: var(--haklai-radius-xs);
+}
+
+.haklai-checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--haklai-primary);
+}
+
+.haklai-checkbox-text {
+    font-size: var(--haklai-text-sm);
+    font-weight: var(--haklai-font-weight-medium);
+    color: var(--haklai-text-heading);
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--haklai-bg-card);
+    border: 2px solid var(--haklai-border);
+    border-top: none;
+    border-radius: 0 0 var(--haklai-radius-sm) var(--haklai-radius-sm);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.search-result-item {
+    padding: var(--haklai-spacing-3) var(--haklai-spacing-4);
+    cursor: pointer;
+    border-bottom: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+}
+
+.search-result-item:hover {
+    background: var(--haklai-bg-primary);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+/* Relatórios */
+.reports-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-lg);
+    box-shadow: var(--haklai-shadow-md);
+    overflow: hidden;
+}
+
+.reports-header {
+    background: var(--haklai-primary-gradient);
+    color: var(--haklai-color-on-primary);
+    padding: var(--haklai-spacing-6) var(--haklai-spacing-8);
+    position: relative;
+}
+
+.reports-header .header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.reports-header .header-content h1 {
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-bold);
+    margin: 0 0 var(--haklai-spacing-2) 0;
+    color: var(--haklai-color-on-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+}
+
+.reports-header .header-content .subtitle {
+    font-size: var(--haklai-text-sm);
+    opacity: 0.9;
+    margin-bottom: var(--haklai-spacing-4);
+    color: var(--haklai-color-on-primary);
+}
+
+.reports-header .user-info {
+    position: absolute;
+    top: var(--haklai-spacing-6);
+    right: var(--haklai-spacing-8);
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    background: var(--haklai-overlay-glass);
+    padding: var(--haklai-spacing-2) var(--haklai-spacing-4);
+    border-radius: var(--haklai-radius-full);
+    backdrop-filter: blur(10px);
+    color: var(--haklai-color-on-overlay);
+    border: 1px solid var(--haklai-overlay-glass-strong);
+}
+
+.reports-header .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--haklai-radius-full);
+    border: 2px solid var(--haklai-overlay-glass-strong);
+}
+
+.reports-content {
+    padding: var(--haklai-spacing-6) var(--haklai-spacing-8);
+}
+
+.filters-panel,
+.reports-section,
+.recent-reports {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-6);
+    margin-bottom: var(--haklai-spacing-4);
+    border: 1px solid var(--haklai-border);
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--haklai-spacing-3);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.report-item {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-4) var(--haklai-spacing-6);
+    margin-bottom: var(--haklai-spacing-3);
+    box-shadow: var(--haklai-shadow-sm);
+    border: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+    position: relative;
+}
+
+.report-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+}
+
+.report-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.report-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--haklai-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--haklai-spacing-4);
+    color: var(--haklai-color-on-primary);
+    font-size: var(--haklai-text-xl);
+    flex-shrink: 0;
+}
+
+.report-icon.presence { background: var(--haklai-success); }
+.report-icon.baptism { background: var(--haklai-info); }
+.report-icon.hierarchy { background: var(--haklai-primary); }
+.report-icon.formations { background: var(--haklai-primary); }
+.report-icon.skills { background: var(--haklai-warning); }
+
+.report-content {
+    flex: 1;
+}
+
+.report-title {
+    font-size: var(--haklai-text-base);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-1);
+}
+
+.report-description {
+    color: var(--haklai-text-secondary);
+    font-size: var(--haklai-text-sm);
+    line-height: var(--haklai-leading-relaxed);
+}
+
+.report-actions {
+    display: flex;
+    gap: var(--haklai-spacing-2);
+    margin-top: var(--haklai-spacing-3);
+    flex-wrap: wrap;
+}
+
+.progress-custom {
+    background-color: var(--haklai-bg-secondary);
+    border-radius: var(--haklai-radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.progress-bar-custom {
+    height: 100%;
+    border-radius: var(--haklai-radius-md);
+    transition: width var(--haklai-transition-base);
+    background: var(--haklai-primary-gradient);
+}
+
+.table-custom .progress-custom {
+    width: 50px;
+    height: 6px;
+}
+
+/* Upload de Imagens */
+.image-upload-container {
+    position: relative;
+}
+
+.image-preview {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.preview-image {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: var(--haklai-radius-md);
+    border: 2px solid var(--haklai-border);
+}
+
+.image-preview .remove-image {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: var(--haklai-radius-full);
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.image-upload-controls {
+    transition: opacity 0.3s ease;
+}
+
+.invalid-feedback {
+    display: none;
+    color: var(--haklai-danger);
+    font-size: var(--haklai-text-sm);
+    margin-top: var(--haklai-spacing-1);
+}
+
+.invalid-feedback.show {
+    display: block;
+}
+
+.haklai-input.is-invalid,
+.haklai-select.is-invalid {
+    border-color: var(--haklai-danger);
+}
+
+/* ========================================
+   NOTIFICAÇÕES
+   ======================================== */
+.haklai-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+    padding: var(--haklai-spacing-4) var(--haklai-spacing-6);
+    border-radius: var(--haklai-radius-sm);
+    box-shadow: var(--haklai-shadow-lg);
+    color: var(--haklai-color-on-primary);
+    font-weight: var(--haklai-font-weight-semibold);
+    transform: translateX(400px);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-notification.show {
+    transform: translateX(0);
+}
+
+.haklai-notification.success {
+    background: var(--haklai-success);
+}
+
+.haklai-notification.error {
+    background: var(--haklai-danger);
+}
+
+.haklai-notification.warning {
+    background: var(--haklai-warning);
+}
+
+.haklai-notification.info {
+    background: var(--haklai-info);
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--haklai-primary);
+    border-top: 2px solid transparent;
+    border-radius: var(--haklai-radius-full);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================
+   UPLOAD PROGRESS
+   ======================================== */
+.haklai-upload-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--haklai-upload-scrim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.upload-progress-container {
+    background: var(--haklai-bg-card);
+    padding: var(--haklai-spacing-8);
+    border-radius: var(--haklai-radius-md);
+    box-shadow: var(--haklai-shadow-xl);
+    min-width: 300px;
+    text-align: center;
+}
+
+.upload-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--haklai-neutral-100);
+    border-radius: var(--haklai-radius-xs);
+    overflow: hidden;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.upload-progress-fill {
+    height: 100%;
+    background: var(--haklai-progress-gradient);
+    border-radius: var(--haklai-radius-xs);
+    transition: width var(--haklai-transition-base);
+    width: 0%;
+    position: relative;
+}
+
+.upload-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: progress-shimmer 1.5s infinite;
+}
+
+@keyframes progress-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.upload-progress-text {
+    color: var(--haklai-text-heading);
+    font-weight: var(--haklai-font-weight-medium);
+    font-size: var(--haklai-text-sm);
+}
+
+/* ========================================
+   UTILITÁRIOS EXPANDIDOS
+   ======================================== */
+.text-left { text-align: left; }
+
+.mt-1 { margin-top: var(--haklai-spacing-1); }
+.mt-2 { margin-top: var(--haklai-spacing-2); }
+.mt-3 { margin-top: var(--haklai-spacing-3); }
+.mt-5 { margin-top: var(--haklai-spacing-8); }
+
+.mb-1 { margin-bottom: var(--haklai-spacing-1); }
+.mb-2 { margin-bottom: var(--haklai-spacing-2); }
+.mb-3 { margin-bottom: var(--haklai-spacing-3); }
+.mb-5 { margin-bottom: var(--haklai-spacing-8); }
+
+.me-1 { margin-right: var(--haklai-spacing-1); }
+.me-2 { margin-right: var(--haklai-spacing-2); }
+.me-3 { margin-right: var(--haklai-spacing-3); }
+.me-4 { margin-right: var(--haklai-spacing-4); }
+.me-5 { margin-right: var(--haklai-spacing-8); }
+
+.ms-1 { margin-left: var(--haklai-spacing-1); }
+.ms-2 { margin-left: var(--haklai-spacing-2); }
+.ms-3 { margin-left: var(--haklai-spacing-3); }
+.ms-4 { margin-left: var(--haklai-spacing-4); }
+.ms-5 { margin-left: var(--haklai-spacing-8); }
+
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-grid { display: grid !important; }
+
+.justify-content-center { justify-content: center; }
+.justify-content-around { justify-content: space-around; }
+
+.align-items-start { align-items: flex-start; }
+.align-items-end { align-items: flex-end; }
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+@media (max-width: 768px) {
+    .checkpoint-content {
+        padding: var(--haklai-spacing-4);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--haklai-spacing-4);
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--haklai-spacing-4);
+    }
+    
+    .member-card {
+        padding: var(--haklai-spacing-4);
+    }
+    
+    .member-photo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .member-name {
+        font-size: var(--haklai-text-sm);
+    }
+    
+    .member-role {
+        font-size: var(--haklai-text-xs);
+    }
+    
+    .controls-grid {
+        grid-template-columns: 1fr;
+        gap: var(--haklai-spacing-4);
+    }
+    
+    .reports-header .user-info {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: var(--haklai-spacing-4);
+        justify-content: center;
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .upload-progress-container {
+        margin: var(--haklai-spacing-4);
+        padding: var(--haklai-spacing-6);
+        min-width: auto;
+    }
+    
+    .upload-progress-text {
+        font-size: var(--haklai-text-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .checkpoint-header {
+        padding: var(--haklai-spacing-4);
+    }
+    
+    .checkpoint-header .header-content h1 {
+        font-size: var(--haklai-text-2xl);
+    }
+    
+    .checkpoint-header .header-content .subtitle {
+        font-size: var(--haklai-text-base);
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   TEMA DARK
+   ======================================== */
+html.haklai-theme-dark {
+    --haklai-text-primary: #f3f3f3;
+    --haklai-text-secondary: #b5bec1;
+    --haklai-text-heading: #ffffff;
+    --haklai-bg-primary: #1e293b;
+    --haklai-bg-secondary: #334155;
+    --haklai-bg-card: #475569;
+    --haklai-bg-input: #1f2937;
+    --haklai-border: #64748b;
+    --haklai-neutral-100: #1f2937;
+    --haklai-neutral-200: #334155;
+    --haklai-neutral-300: #475569;
+    --haklai-primary-gradient: linear-gradient(135deg, #4f46e5 0%, #312e81 100%);
+    --haklai-progress-gradient: linear-gradient(90deg, #818cf8 0%, #6366f1 100%);
+    --haklai-body-gradient: var(--haklai-body-gradient-dark);
+    --haklai-header-radial: var(--haklai-header-radial-dark);
+    --haklai-overlay-glass: rgba(148, 163, 184, 0.16);
+    --haklai-overlay-glass-strong: rgba(148, 163, 184, 0.28);
+    --haklai-color-on-overlay: #e2e8f0;
+    --haklai-shadow-lg: var(--haklai-shadow-lg-dark);
+    --haklai-backdrop-scrim: rgba(15, 23, 42, 0.7);
+    --haklai-upload-scrim: rgba(15, 23, 42, 0.85);
+    --haklai-floating-button-bg: rgba(148, 163, 184, 0.35);
+}
+
+html.haklai-theme-dark body {
+    background: var(--haklai-body-gradient) !important;
+}
+
+html.haklai-theme-dark .checkpoint-container {
+    background: var(--haklai-bg-card);
+    border: 1px solid var(--haklai-border);
+}
+
+html.haklai-theme-dark .haklai-input,
+html.haklai-theme-dark .haklai-select {
+    background: var(--haklai-bg-input);
+    border-color: var(--haklai-border);
+    color: var(--haklai-text-primary);
+}
+
+html.haklai-theme-dark .haklai-input:focus,
+html.haklai-theme-dark .haklai-select:focus {
+    background: var(--haklai-bg-input);
+    border-color: var(--haklai-primary);
+}
+
+html.haklai-theme-dark .search-results {
+    background: var(--haklai-bg-secondary);
+    border-color: var(--haklai-border);
+}
+
+html.haklai-theme-dark .search-result-item:hover {
+    background: var(--haklai-bg-card);
+}
+
+html.haklai-theme-dark .stat-card:hover,
+html.haklai-theme-dark .report-item:hover {
+    box-shadow: var(--haklai-shadow-lg-dark);
+}
+
+html.haklai-theme-dark .reports-header .user-info {
+    box-shadow: var(--haklai-shadow-lg-dark);
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+    body {
+        background: var(--haklai-white) !important;
+        padding: 0 !important;
+    }
+    
+    .checkpoint-header {
+        background: var(--haklai-white) !important;
+        color: black !important;
+        border-bottom: 2px solid var(--haklai-neutral-200);
+    }
+    
+    .haklai-btn {
+        display: none !important;
+    }
+    
+    .haklai-modal-overlay {
+        display: none !important;
+    }
+    
+    .checkpoint-container,
+    .reports-container {
+        box-shadow: none !important;
+        border: 1px solid var(--haklai-neutral-200);
+    }
+}

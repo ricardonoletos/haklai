@@ -1,0 +1,449 @@
+/**
+ * Haklai Design System v2.0
+ * Baseado nos designs: Estilo_Relatorio.html, detalhe_relatorio.html e checkpoint_2.html
+ * 
+ * Projeto: Haklai Church — Plugin WordPress Modular
+ * Desenvolvido por: Ricardo Sarmento - https://linx.pt
+ * 
+ * Características:
+ * - Estilo minimalista e moderno
+ * - Suporte completo a Dark Mode
+ * - Design responsivo
+ * - Acessibilidade (WCAG)
+ */
+
+/* ========================================
+   TOKENS DE DESIGN (Variáveis CSS)
+   ======================================== */
+:root {
+    /* === COR PRIMÁRIA === */
+    --haklai-primary: #2b8cce;
+    --haklai-primary-hover: #246da8;
+    --haklai-primary-light: rgba(43, 140, 206, 0.95);
+    --haklai-primary-dark: rgba(43, 140, 206, 0.9);
+    --haklai-primary-alpha-10: rgba(43, 140, 206, 0.1);
+    --haklai-primary-alpha-20: rgba(43, 140, 206, 0.2);
+    
+    /* === CORES DE ESTADO === */
+    --haklai-success: #36B37E;
+    --haklai-success-light: #86efac;
+    --haklai-success-bg: #dcfce7;
+    --haklai-success-text: #15803d;
+    
+    --haklai-danger: #FF5630;
+    --haklai-danger-light: #fca5a5;
+    --haklai-danger-bg: #fee2e2;
+    --haklai-danger-text: #991b1b;
+    
+    --haklai-warning: #FFAB00;
+    --haklai-warning-light: #fde047;
+    --haklai-warning-bg: #fef9c3;
+    --haklai-warning-text: #713f12;
+    
+    /* === BACKGROUNDS === */
+    --haklai-bg-light: #f6f7f8;
+    --haklai-bg-dark: #121a20;
+    --haklai-bg-card-light: #ffffff;
+    --haklai-bg-card-dark: rgba(24, 24, 27, 0.5);
+    --haklai-bg-input-light: #f1f5f9;
+    --haklai-bg-input-dark: #27272a;
+    --haklai-bg-hover-light: #f8fafc;
+    --haklai-bg-hover-dark: rgba(24, 24, 27, 0.5);
+    
+    /* === TEXTO === */
+    --haklai-text-primary-light: #334155;
+    --haklai-text-secondary-light: #64748b;
+    --haklai-text-tertiary-light: #94a3b8;
+    --haklai-text-heading-light: #1e293b;
+    
+    --haklai-text-primary-dark: #cbd5e1;
+    --haklai-text-secondary-dark: #94a3b8;
+    --haklai-text-heading-dark: #f1f5f9;
+    
+    /* === BORDAS === */
+    --haklai-border-light: #e2e8f0;
+    --haklai-border-dark: #27272a;
+    --haklai-border-card-dark: #3f3f46;
+    
+    /* === BORDER RADIUS (Minimalista) === */
+    --haklai-radius-xs: 0.125rem;
+    --haklai-radius-sm: 0.25rem;
+    --haklai-radius-md: 0.375rem;
+    --haklai-radius-lg: 0.5rem;
+    --haklai-radius-xl: 0.75rem;
+    --haklai-radius-full: 9999px;
+    
+    /* === SOMBRAS === */
+    --haklai-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --haklai-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --haklai-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --haklai-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    
+    /* === TIPOGRAFIA === */
+    --haklai-font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    --haklai-font-weight-light: 300;
+    --haklai-font-weight-normal: 400;
+    --haklai-font-weight-medium: 500;
+    --haklai-font-weight-semibold: 600;
+    --haklai-font-weight-bold: 700;
+    
+    --haklai-text-xs: 0.75rem;
+    --haklai-text-sm: 0.875rem;
+    --haklai-text-base: 1rem;
+    --haklai-text-lg: 1.125rem;
+    --haklai-text-xl: 1.25rem;
+    --haklai-text-2xl: 1.5rem;
+    --haklai-text-3xl: 1.875rem;
+    
+    --haklai-leading-normal: 1.5;
+    --haklai-leading-relaxed: 1.75;
+    
+    /* === ESPAÇAMENTOS === */
+    --haklai-spacing-1: 0.25rem;
+    --haklai-spacing-2: 0.5rem;
+    --haklai-spacing-3: 0.75rem;
+    --haklai-spacing-4: 1rem;
+    --haklai-spacing-6: 1.5rem;
+    --haklai-spacing-8: 2rem;
+    
+    /* === TRANSIÇÕES === */
+    --haklai-transition-fast: 0.15s ease;
+    --haklai-transition-base: 0.2s ease;
+    --haklai-transition-slow: 0.3s ease;
+    
+    /* === Z-INDEX === */
+    --haklai-z-dropdown: 1000;
+    --haklai-z-sticky: 1020;
+    --haklai-z-fixed: 1030;
+    --haklai-z-modal: 1050;
+}
+
+/* ========================================
+   COMPONENTES: BOTÕES
+   ======================================== */
+
+.haklai-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--haklai-spacing-2);
+    padding: var(--haklai-spacing-2) var(--haklai-spacing-3);
+    font-family: var(--haklai-font-family);
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-semibold);
+    line-height: var(--haklai-leading-normal);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    border-radius: var(--haklai-radius-md);
+    transition: all var(--haklai-transition-base);
+    min-height: 36px;
+}
+
+.haklai-btn:focus {
+    outline: 2px solid var(--haklai-primary);
+    outline-offset: 2px;
+}
+
+.haklai-btn:disabled,
+.haklai-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.haklai-btn-primary {
+    background-color: var(--haklai-primary);
+    color: #ffffff;
+}
+
+.haklai-btn-primary:hover:not(:disabled) {
+    background-color: var(--haklai-primary-hover);
+}
+
+.haklai-btn-secondary {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.haklai-btn-secondary:hover:not(:disabled) {
+    background-color: #cbd5e1;
+}
+
+.dark .haklai-btn-secondary {
+    background-color: #3f3f46;
+    color: #e4e4e7;
+}
+
+.dark .haklai-btn-secondary:hover:not(:disabled) {
+    background-color: #52525b;
+}
+
+.haklai-btn-success {
+    background-color: var(--haklai-success);
+    color: #ffffff;
+}
+
+.haklai-btn-success:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.haklai-btn-danger {
+    background-color: var(--haklai-danger);
+    color: #ffffff;
+}
+
+.haklai-btn-danger:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.haklai-btn-icon {
+    background: transparent;
+    border: none;
+    color: var(--haklai-primary);
+    padding: var(--haklai-spacing-2);
+    cursor: pointer;
+    transition: color var(--haklai-transition-base);
+    font-size: var(--haklai-text-lg);
+    min-height: auto;
+    text-transform: none;
+}
+
+.haklai-btn-icon:hover {
+    color: var(--haklai-primary-hover);
+}
+
+.haklai-btn-icon.danger {
+    color: #64748b;
+}
+
+.haklai-btn-icon.danger:hover {
+    color: #334155;
+}
+
+/* ========================================
+   COMPONENTES: INPUTS E FORMULÁRIOS
+   ======================================== */
+
+.haklai-form-group {
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.haklai-label {
+    display: block;
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-medium);
+    color: var(--haklai-text-secondary-light);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: var(--haklai-spacing-1);
+}
+
+.dark .haklai-label {
+    color: var(--haklai-text-secondary-dark);
+}
+
+.haklai-input,
+.haklai-select,
+.haklai-textarea {
+    width: 100%;
+    padding: var(--haklai-spacing-2);
+    font-family: var(--haklai-font-family);
+    font-size: var(--haklai-text-sm);
+    color: var(--haklai-text-heading-light);
+    background-color: var(--haklai-bg-input-light);
+    border: 1px solid var(--haklai-border-light);
+    border-radius: var(--haklai-radius-sm);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-input:focus,
+.haklai-select:focus,
+.haklai-textarea:focus {
+    outline: none;
+    border-color: var(--haklai-primary);
+    box-shadow: 0 0 0 3px var(--haklai-primary-alpha-10);
+}
+
+.dark .haklai-input,
+.dark .haklai-select,
+.dark .haklai-textarea {
+    background-color: var(--haklai-bg-input-dark);
+    border-color: var(--haklai-border-card-dark);
+    color: var(--haklai-text-primary-dark);
+}
+
+.haklai-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ========================================
+   COMPONENTES: CARDS
+   ======================================== */
+
+.haklai-card {
+    background-color: var(--haklai-bg-card-light);
+    border: 1px solid var(--haklai-border-light);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-6);
+    box-shadow: var(--haklai-shadow-md);
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-card:hover {
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.dark .haklai-card {
+    background-color: var(--haklai-bg-card-dark);
+    border-color: var(--haklai-border-dark);
+}
+
+.haklai-card-header {
+    text-align: center;
+    font-size: var(--haklai-text-xl);
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading-light);
+    margin-bottom: var(--haklai-spacing-6);
+    position: relative;
+    padding-bottom: var(--haklai-spacing-4);
+}
+
+.dark .haklai-card-header {
+    color: var(--haklai-text-heading-dark);
+}
+
+.haklai-card-header::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 4rem;
+    background-color: var(--haklai-primary);
+}
+
+.haklai-card-body {
+    color: var(--haklai-text-primary-light);
+}
+
+.dark .haklai-card-body {
+    color: var(--haklai-text-primary-dark);
+}
+
+/* ========================================
+   COMPONENTES: BADGES
+   ======================================== */
+
+.haklai-badge {
+    display: inline-block;
+    padding: var(--haklai-spacing-1) 0.625rem;
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-semibold);
+    border-radius: var(--haklai-radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    line-height: 1;
+}
+
+.haklai-badge-success {
+    background-color: var(--haklai-success-bg);
+    color: var(--haklai-success-text);
+}
+
+.dark .haklai-badge-success {
+    background-color: rgba(34, 197, 94, 0.5);
+    color: var(--haklai-success-light);
+}
+
+.haklai-badge-danger {
+    background-color: var(--haklai-danger-bg);
+    color: var(--haklai-danger-text);
+}
+
+.dark .haklai-badge-danger {
+    background-color: rgba(239, 68, 68, 0.5);
+    color: var(--haklai-danger-light);
+}
+
+/* ========================================
+   UTILITÁRIOS: ESPAÇAMENTOS
+   ======================================== */
+
+.haklai-mt-1 { margin-top: var(--haklai-spacing-1); }
+.haklai-mt-2 { margin-top: var(--haklai-spacing-2); }
+.haklai-mt-3 { margin-top: var(--haklai-spacing-3); }
+.haklai-mt-4 { margin-top: var(--haklai-spacing-4); }
+.haklai-mt-6 { margin-top: var(--haklai-spacing-6); }
+
+.haklai-mb-1 { margin-bottom: var(--haklai-spacing-1); }
+.haklai-mb-2 { margin-bottom: var(--haklai-spacing-2); }
+.haklai-mb-3 { margin-bottom: var(--haklai-spacing-3); }
+.haklai-mb-4 { margin-bottom: var(--haklai-spacing-4); }
+.haklai-mb-6 { margin-bottom: var(--haklai-spacing-6); }
+
+.haklai-p-2 { padding: var(--haklai-spacing-2); }
+.haklai-p-3 { padding: var(--haklai-spacing-3); }
+.haklai-p-4 { padding: var(--haklai-spacing-4); }
+.haklai-p-6 { padding: var(--haklai-spacing-6); }
+
+/* ========================================
+   UTILITÁRIOS: CORES DE TEXTO
+   ======================================== */
+
+.haklai-text-primary { color: var(--haklai-primary); }
+.haklai-text-success { color: var(--haklai-success); }
+.haklai-text-danger { color: var(--haklai-danger); }
+.haklai-text-warning { color: var(--haklai-warning); }
+.haklai-text-muted { color: var(--haklai-text-secondary-light); }
+
+.dark .haklai-text-muted {
+    color: var(--haklai-text-secondary-dark);
+}
+
+/* ========================================
+   UTILITÁRIOS: SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #9ca3af;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .haklai-btn {
+        font-size: 0.7rem;
+        padding: var(--haklai-spacing-2);
+    }
+}
+

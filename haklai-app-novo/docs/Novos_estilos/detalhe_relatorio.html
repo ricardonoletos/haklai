@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalhes do Relatório</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2b8cce",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#121a20"
+                    },
+                    fontFamily: {
+                        display: "Manrope"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-icons {
+            font-size: inherit;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 10px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #4b5563;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-700 dark:text-slate-300">
+<div class="min-h-screen p-4 sm:p-6 lg:p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<header class="bg-primary/95 dark:bg-primary/90 text-white p-6 rounded-lg shadow-lg flex justify-between items-center flex-wrap gap-4">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold">Relatório de Presença da Célula</h1>
+<p class="text-sm md:text-base text-indigo-200">Detalhes da reunião da Célula - francisco.nascimento</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">arrow_back</span> VOLTAR
+                    </button>
+<button class="bg-white/90 hover:bg-white/100 dark:bg-slate-200 dark:hover:bg-slate-300 text-slate-800 font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">download</span> BAIXAR
+                    </button>
+</div>
+</header>
+<main class="space-y-8">
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+                        Informações da Reunião
+                        <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">event</span>
+</div>
+<p class="text-lg font-bold text-slate-800 dark:text-slate-100">25 de Outubro de 2025</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">DATA DA REUNIÃO</p>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">location_on</span>
+</div>
+<p class="text-lg font-bold text-slate-800 dark:text-slate-100">Rua da Paz, 123, Centro</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">LOCAL DA REUNIÃO</p>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">people</span>
+</div>
+<p class="text-lg font-bold text-slate-800 dark:text-slate-100">17 Presentes / 3 Ausentes</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">PARTICIPAÇÃO TOTAL</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+                            Lista de Presentes (17)
+                            <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="space-y-3">
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Ana Beatriz</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Carlos Eduardo</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Daniela Ferreira</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Eduardo Martins</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Fernanda Lima</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Gabriel Costa</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Helena Santos</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-green-500 mr-3">check_circle</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Igor Almeida</span>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+                            Lista de Ausentes (3)
+                            <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="space-y-3">
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-red-500 mr-3">cancel</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Jéssica Oliveira</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-red-500 mr-3">cancel</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Lucas Pereira</span>
+</div>
+<div class="flex items-center p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/50">
+<span class="material-icons text-red-500 mr-3">cancel</span>
+<span class="text-slate-800 dark:text-slate-200 font-medium">Mariana Rodrigues</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>
