@@ -1,0 +1,340 @@
+/**
+ * Estilos da página de onboarding do Haklai
+ * FASE 5: Fluxo de registro inicial para Tenant Owner
+ * 
+ * @package HaklaiApp
+ * @author Ricardo Sarmento
+ * @version 2.0.0
+ */
+
+/* Container Principal */
+.haklai-onboarding-wrap {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.haklai-onboarding-container {
+    max-width: 600px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.haklai-onboarding-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.haklai-onboarding-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.haklai-onboarding-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.haklai-logo-icon {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.haklai-onboarding-logo h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+}
+
+.haklai-onboarding-subtitle {
+    font-size: 16px;
+    opacity: 0.95;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Conteúdo */
+.haklai-onboarding-content {
+    padding: 40px 30px;
+}
+
+.haklai-form-section {
+    margin-bottom: 30px;
+}
+
+.haklai-form-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 8px 0;
+}
+
+.haklai-form-description {
+    font-size: 14px;
+    color: #718096;
+    margin: 0 0 30px 0;
+    line-height: 1.6;
+}
+
+/* Campos do Formulário */
+.haklai-form-group {
+    margin-bottom: 24px;
+}
+
+.haklai-form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+
+.haklai-required {
+    color: #e53e3e;
+    margin-left: 4px;
+}
+
+.haklai-form-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #f8f9fa;
+    background-color: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.haklai-form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.haklai-form-input:invalid {
+    border-color: #fc8181;
+}
+
+.haklai-form-input::placeholder {
+    color: #a0aec0;
+}
+
+.haklai-form-help {
+    font-size: 13px;
+    color: #718096;
+    margin: 6px 0 0 0;
+    line-height: 1.5;
+}
+
+/* Mensagens de Feedback */
+.haklai-onboarding-messages {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.haklai-onboarding-messages.haklai-message-success {
+    background-color: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.haklai-onboarding-messages.haklai-message-error {
+    background-color: #fed7d7;
+    color: #742a2a;
+    border: 1px solid #fc8181;
+}
+
+.haklai-onboarding-messages.haklai-message-info {
+    background-color: #bee3f8;
+    color: #2c5282;
+    border: 1px solid #90cdf4;
+}
+
+/* Botões */
+.haklai-form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.haklai-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    min-width: 120px;
+}
+
+.haklai-button-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+}
+
+.haklai-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.haklai-button-primary:active {
+    transform: translateY(0);
+}
+
+.haklai-button-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.haklai-button-spinner {
+    display: inline-block;
+}
+
+.haklai-button-spinner .spinner {
+    float: none;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+/* Footer */
+.haklai-onboarding-footer {
+    padding: 20px 30px;
+    background-color: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.haklai-footer-text {
+    font-size: 12px;
+    color: #718096;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .haklai-onboarding-wrap {
+        padding: 10px;
+    }
+
+    .haklai-onboarding-container {
+        border-radius: 8px;
+    }
+
+    .haklai-onboarding-header {
+        padding: 30px 20px;
+    }
+
+    .haklai-onboarding-logo h1 {
+        font-size: 28px;
+    }
+
+    .haklai-logo-icon {
+        font-size: 36px;
+    }
+
+    .haklai-onboarding-content {
+        padding: 30px 20px;
+    }
+
+    .haklai-form-title {
+        font-size: 20px;
+    }
+
+    .haklai-form-actions {
+        flex-direction: column;
+    }
+
+    .haklai-button {
+        width: 100%;
+    }
+}
+
+/* Tema Escuro (WordPress) */
+@media (prefers-color-scheme: dark) {
+    .haklai-onboarding-container {
+        background: #1e1e1e;
+    }
+
+    .haklai-form-title {
+        color: #e5e5e5;
+    }
+
+    .haklai-form-description {
+        color: #b0b0b0;
+    }
+
+    .haklai-form-label {
+        color: #e5e5e5;
+    }
+
+    .haklai-form-input {
+        background-color: #e5e5e5;
+        border-color: #404040;
+        color: #e5e5e5;
+    }
+
+    .haklai-form-input:focus {
+        border-color: #667eea;
+        background-color: #e5e5e5;
+    }
+
+    .haklai-form-input::placeholder {
+        color: #808080;
+    }
+
+    .haklai-form-help {
+        color: #b0b0b0;
+    }
+
+    .haklai-onboarding-footer {
+        background-color: #252525;
+        border-top-color: #404040;
+    }
+
+    .haklai-footer-text {
+        color: #b0b0b0;
+    }
+}
+

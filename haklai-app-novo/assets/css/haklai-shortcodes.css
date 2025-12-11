@@ -1,0 +1,911 @@
+/**
+ * Haklai Shortcodes CSS - Estilos Específicos
+ * Complementa o haklai-design-system.css
+ * 
+ * Projeto: Haklai Church — Plugin WordPress Modular
+ * Desenvolvido por: Ricardo Sarmento - https://linx.pt
+ * 
+ * NOTA: Este arquivo contém APENAS estilos específicos dos shortcodes
+ * que não estão no design system base. Sem duplicações.
+ */
+
+/* ========================================
+   LOGIN E ACESSO NEGADO
+   ======================================== */
+
+.haklai-login-container {
+    padding: var(--haklai-spacing-8) var(--haklai-spacing-4);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.haklai-login-card {
+    box-shadow: var(--haklai-shadow-lg);
+    border: none;
+    border-radius: var(--haklai-radius-lg);
+    background-color: var(--haklai-bg-card);
+}
+
+.haklai-login-card .card-body {
+    padding: var(--haklai-spacing-8);
+}
+
+.haklai-login-card .fa-user-circle {
+    color: var(--haklai-success);
+}
+
+/* Formulário de login do WordPress */
+#haklai_loginform {
+    width: 100%;
+}
+
+#haklai_loginform p {
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+#haklai_loginform label {
+    display: block;
+    font-weight: var(--haklai-font-weight-semibold);
+    margin-bottom: var(--haklai-spacing-2);
+    color: var(--haklai-text-heading);
+    font-size: var(--haklai-text-sm);
+}
+
+#haklai_loginform input[type="text"],
+#haklai_loginform input[type="password"] {
+    width: 100%;
+    padding: var(--haklai-spacing-3);
+    border: 2px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-sm);
+    font-size: var(--haklai-text-base);
+    transition: all var(--haklai-transition-base);
+    background-color: var(--haklai-bg-input);
+    color: var(--haklai-text-heading);
+    font-family: var(--haklai-font-family);
+}
+
+#haklai_loginform input[type="text"]:focus,
+#haklai_loginform input[type="password"]:focus {
+    outline: none;
+    border-color: var(--haklai-success);
+    box-shadow: 0 0 0 3px var(--haklai-primary-alpha-10);
+    background-color: var(--haklai-bg-card);
+}
+
+#haklai_loginform .login-remember {
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    margin-top: var(--haklai-spacing-3);
+}
+
+#haklai_loginform .login-remember label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: var(--haklai-font-weight-normal);
+    cursor: pointer;
+    font-size: var(--haklai-text-sm);
+}
+
+#haklai_loginform input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    margin-right: var(--haklai-spacing-2);
+    cursor: pointer;
+    accent-color: var(--haklai-primary);
+}
+
+#haklai_loginform .login-submit {
+    margin-top: var(--haklai-spacing-6);
+    margin-bottom: 0;
+}
+
+#haklai_loginform input[type="submit"] {
+    width: 100%;
+    padding: var(--haklai-spacing-3) var(--haklai-spacing-6);
+    background: var(--haklai-success);
+    color: white;
+    border: none;
+    border-radius: var(--haklai-radius-md);
+    font-size: var(--haklai-text-base);
+    font-weight: var(--haklai-font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--haklai-transition-base);
+    font-family: var(--haklai-font-family);
+}
+
+#haklai_loginform input[type="submit"]:hover {
+    background: var(--haklai-success);
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+#haklai_loginform input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.haklai-login-card .text-muted {
+    color: var(--haklai-text-secondary);
+    text-decoration: none;
+    transition: color var(--haklai-transition-base);
+}
+
+.haklai-login-card .text-muted:hover {
+    color: var(--haklai-success);
+}
+
+.haklai-login-card .alert-info {
+    background-color: var(--haklai-info-bg);
+    border-color: var(--haklai-info);
+    color: var(--haklai-info-text);
+    border-radius: var(--haklai-radius-md);
+}
+
+.haklai-login-card .login-error {
+    background-color: var(--haklai-danger-bg);
+    border: 1px solid var(--haklai-danger);
+    color: var(--haklai-danger-text);
+    padding: var(--haklai-spacing-3);
+    border-radius: var(--haklai-radius-md);
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.haklai-access-denied {
+    padding: var(--haklai-spacing-8) var(--haklai-spacing-4);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.haklai-access-denied .card {
+    box-shadow: var(--haklai-shadow-lg);
+    border: none;
+    border-radius: var(--haklai-radius-lg);
+}
+
+.haklai-access-denied .fa-lock {
+    color: var(--haklai-text-secondary);
+}
+
+/* ========================================
+   CHECKPOINT - Estilos Específicos
+   ======================================== */
+
+.checkpoint-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-lg);
+    box-shadow: var(--haklai-shadow-xl);
+    overflow: hidden;
+}
+
+.checkpoint-header {
+    background: var(--haklai-primary-gradient);
+    color: white;
+    padding: var(--haklai-spacing-8);
+    position: relative;
+    overflow: hidden;
+}
+
+.checkpoint-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.checkpoint-header .header-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.checkpoint-header .header-content h1 {
+    font-size: var(--haklai-text-3xl);
+    font-weight: var(--haklai-font-weight-extrabold);
+    margin: 0;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    letter-spacing: -1px;
+}
+
+.checkpoint-header .header-content .subtitle {
+    font-size: var(--haklai-text-lg);
+    opacity: 0.9;
+    margin-top: var(--haklai-spacing-4);
+    font-weight: var(--haklai-font-weight-light);
+}
+
+.checkpoint-content {
+    padding: var(--haklai-spacing-8);
+}
+
+.stats-dashboard {
+    background: var(--haklai-bg-primary);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    margin-bottom: var(--haklai-spacing-8);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--haklai-spacing-6);
+}
+
+.stat-card {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-6);
+    text-align: center;
+    box-shadow: var(--haklai-shadow-md);
+    border: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.stat-card .icon {
+    width: 50px;
+    height: 50px;
+    background: var(--haklai-primary-gradient);
+    border-radius: var(--haklai-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--haklai-spacing-4);
+    color: white;
+    font-size: var(--haklai-text-2xl);
+}
+
+.stat-card .number {
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-extrabold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+.stat-card .label {
+    color: var(--haklai-text-secondary);
+    font-size: var(--haklai-text-sm);
+    text-transform: uppercase;
+    font-weight: var(--haklai-font-weight-semibold);
+    letter-spacing: 1px;
+}
+
+.controls-panel {
+    background: var(--haklai-bg-secondary);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    margin-bottom: var(--haklai-spacing-8);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--haklai-spacing-6);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-label {
+    font-size: var(--haklai-text-sm);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.members-section {
+    background: var(--haklai-bg-secondary);
+    border-radius: var(--haklai-radius-lg);
+    padding: var(--haklai-spacing-8);
+    margin-bottom: var(--haklai-spacing-8);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--haklai-spacing-6);
+}
+
+.member-card {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-6);
+    text-align: center;
+    box-shadow: var(--haklai-shadow-md);
+    border: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--haklai-shadow-lg);
+}
+
+.member-card.present {
+    border-color: var(--haklai-success);
+    background: var(--haklai-success-bg);
+}
+
+.member-card.absent {
+    border-color: var(--haklai-danger);
+    background: var(--haklai-danger-bg);
+}
+
+.member-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--haklai-radius-full);
+    object-fit: cover;
+    margin: 0 auto var(--haklai-spacing-4);
+    border: 3px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+}
+
+.member-card.present .member-photo {
+    border-color: var(--haklai-success);
+}
+
+.member-card.absent .member-photo {
+    border-color: var(--haklai-danger);
+}
+
+.member-name {
+    font-size: var(--haklai-text-lg);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-2);
+}
+
+.member-role {
+    font-size: var(--haklai-text-sm);
+    color: var(--haklai-text-secondary);
+    text-transform: uppercase;
+    font-weight: var(--haklai-font-weight-semibold);
+    letter-spacing: 1px;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.btn-edit-member {
+    position: absolute;
+    top: var(--haklai-spacing-2);
+    right: var(--haklai-spacing-2);
+    background: rgba(155, 145, 151, 0.9);
+    border: 1px solid var(--haklai-border);
+    border-radius: var(--haklai-radius-full);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--haklai-transition-base);
+    color: var(--haklai-bg-card);
+    z-index: 10;
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.btn-edit-member:hover {
+    background: var(--haklai-primary);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.btn-edit-member i {
+    font-size: var(--haklai-text-sm);
+}
+
+.section-title {
+    color: var(--haklai-text-heading);
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-bold);
+    margin-bottom: var(--haklai-spacing-6);
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--haklai-spacing-2) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+    border-radius: 2px;
+}
+
+/* Toggle Switch (Encontro com Deus) */
+.haklai-toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--haklai-spacing-4);
+    cursor: pointer;
+}
+
+.haklai-toggle-switch input[type="checkbox"] {
+    display: none;
+}
+
+.haklai-toggle-slider {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: #cbd5e0;
+    border-radius: 30px;
+    transition: all var(--haklai-transition-base);
+}
+
+.haklai-toggle-slider::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: var(--haklai-radius-full);
+    transition: all var(--haklai-transition-base);
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.haklai-toggle-switch input:checked + .haklai-toggle-slider {
+    background: var(--haklai-success);
+}
+
+.haklai-toggle-switch input:checked + .haklai-toggle-slider::before {
+    transform: translateX(30px);
+}
+
+.haklai-toggle-label {
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading);
+}
+
+/* Formações Checkboxes */
+.haklai-formacoes-fieldset {
+    border: 1px solid var(--haklai-border);
+    padding: var(--haklai-spacing-4);
+    border-radius: var(--haklai-radius-sm);
+    background: var(--haklai-bg-primary);
+}
+
+.haklai-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    padding: var(--haklai-spacing-2) 0;
+    cursor: pointer;
+    transition: background var(--haklai-transition-fast);
+}
+
+.haklai-checkbox-label:hover {
+    background: var(--haklai-bg-secondary);
+    padding-left: var(--haklai-spacing-1);
+    border-radius: var(--haklai-radius-xs);
+}
+
+.haklai-checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--haklai-primary);
+}
+
+.haklai-checkbox-text {
+    font-size: var(--haklai-text-sm);
+    font-weight: var(--haklai-font-weight-medium);
+    color: var(--haklai-text-heading);
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--haklai-bg-card);
+    border: 2px solid var(--haklai-border);
+    border-top: none;
+    border-radius: 0 0 var(--haklai-radius-sm) var(--haklai-radius-sm);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.search-result-item {
+    padding: var(--haklai-spacing-3) var(--haklai-spacing-4);
+    cursor: pointer;
+    border-bottom: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+}
+
+.search-result-item:hover {
+    background: var(--haklai-bg-primary);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+/* ========================================
+   RELATÓRIOS - Estilos Específicos
+   ======================================== */
+
+.reports-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-lg);
+    box-shadow: var(--haklai-shadow-md);
+    overflow: hidden;
+}
+
+.reports-header {
+    background: var(--haklai-primary-gradient);
+    color: white;
+    padding: var(--haklai-spacing-6) var(--haklai-spacing-8);
+    position: relative;
+}
+
+.reports-header .header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.reports-header .header-content h1 {
+    font-size: var(--haklai-text-2xl);
+    font-weight: var(--haklai-font-weight-bold);
+    margin: 0 0 var(--haklai-spacing-2) 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+}
+
+.reports-header .header-content .subtitle {
+    font-size: var(--haklai-text-sm);
+    opacity: 0.9;
+    margin-bottom: var(--haklai-spacing-4);
+    color: white;
+}
+
+.reports-header .user-info {
+    position: absolute;
+    top: var(--haklai-spacing-6);
+    right: var(--haklai-spacing-8);
+    display: flex;
+    align-items: center;
+    gap: var(--haklai-spacing-2);
+    background: rgba(255,255,255,0.15);
+    padding: var(--haklai-spacing-2) var(--haklai-spacing-4);
+    border-radius: var(--haklai-radius-full);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.reports-header .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--haklai-radius-full);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.reports-content {
+    padding: var(--haklai-spacing-6) var(--haklai-spacing-8);
+}
+
+.filters-panel,
+.reports-section,
+.recent-reports {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-6);
+    margin-bottom: var(--haklai-spacing-4);
+    border: 1px solid var(--haklai-border);
+    box-shadow: var(--haklai-shadow-sm);
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--haklai-spacing-3);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    font-size: var(--haklai-text-xs);
+    font-weight: var(--haklai-font-weight-semibold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.report-item {
+    background: var(--haklai-bg-card);
+    border-radius: var(--haklai-radius-md);
+    padding: var(--haklai-spacing-4) var(--haklai-spacing-6);
+    margin-bottom: var(--haklai-spacing-3);
+    box-shadow: var(--haklai-shadow-sm);
+    border: 1px solid var(--haklai-border);
+    transition: all var(--haklai-transition-base);
+    position: relative;
+}
+
+.report-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--haklai-primary-gradient);
+}
+
+.report-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--haklai-shadow-md);
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.report-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--haklai-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--haklai-spacing-4);
+    color: white;
+    font-size: var(--haklai-text-xl);
+    flex-shrink: 0;
+}
+
+.report-icon.presence { background: var(--haklai-success); }
+.report-icon.baptism { background: var(--haklai-info); }
+.report-icon.hierarchy { background: var(--haklai-primary); }
+.report-icon.formations { background: var(--haklai-primary); }
+.report-icon.skills { background: var(--haklai-warning); }
+
+.report-content {
+    flex: 1;
+}
+
+.report-title {
+    font-size: var(--haklai-text-base);
+    font-weight: var(--haklai-font-weight-bold);
+    color: var(--haklai-text-heading);
+    margin-bottom: var(--haklai-spacing-1);
+}
+
+.report-description {
+    color: var(--haklai-text-secondary);
+    font-size: var(--haklai-text-sm);
+    line-height: var(--haklai-leading-relaxed);
+}
+
+.report-actions {
+    display: flex;
+    gap: var(--haklai-spacing-2);
+    margin-top: var(--haklai-spacing-3);
+    flex-wrap: wrap;
+}
+
+/* Progress Bar Custom */
+.progress-custom {
+    background-color: var(--haklai-bg-secondary);
+    border-radius: var(--haklai-radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.progress-bar-custom {
+    height: 100%;
+    border-radius: var(--haklai-radius-md);
+    transition: width var(--haklai-transition-base);
+    background: var(--haklai-primary-gradient);
+}
+
+.table-custom .progress-custom {
+    width: 50px;
+    height: 6px;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .checkpoint-content {
+        padding: var(--haklai-spacing-4);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--haklai-spacing-4);
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--haklai-spacing-4);
+    }
+    
+    .member-card {
+        padding: var(--haklai-spacing-4);
+    }
+    
+    .member-photo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .member-name {
+        font-size: var(--haklai-text-sm);
+    }
+    
+    .member-role {
+        font-size: var(--haklai-text-xs);
+    }
+    
+    .controls-grid {
+        grid-template-columns: 1fr;
+        gap: var(--haklai-spacing-4);
+    }
+    
+    .reports-header .user-info {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: var(--haklai-spacing-4);
+        justify-content: center;
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkpoint-header {
+        padding: var(--haklai-spacing-4);
+    }
+    
+    .checkpoint-header .header-content h1 {
+        font-size: var(--haklai-text-2xl);
+    }
+    
+    .checkpoint-header .header-content .subtitle {
+        font-size: var(--haklai-text-base);
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   UPLOAD DE IMAGENS (CHECKPOINT)
+   ======================================== */
+
+.image-upload-container {
+    position: relative;
+}
+
+.image-preview {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--haklai-spacing-4);
+}
+
+.preview-image {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: var(--haklai-radius-md);
+    border: 2px solid var(--haklai-border-color);
+}
+
+.image-preview .remove-image {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: var(--haklai-radius-full);
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.image-upload-controls {
+    transition: opacity 0.3s ease;
+}
+
+.invalid-feedback {
+    display: none;
+    color: var(--haklai-danger);
+    font-size: var(--haklai-text-sm);
+    margin-top: var(--haklai-spacing-1);
+}
+
+.invalid-feedback.show {
+    display: block;
+}
+
+.haklai-input.is-invalid,
+.haklai-select.is-invalid {
+    border-color: var(--haklai-danger);
+}

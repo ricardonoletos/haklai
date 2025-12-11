@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Variant 3</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#2c8dce", "background-light": "#f6f7f8", "background-dark": "#121a20", "text-primary-light": "#172B4D", "text-primary-dark": "#FFFFFF", "text-secondary-light": "#6B778C", "text-secondary-dark": "#aeb7c4", "border-light": "#DFE1E6", "border-dark": "#343d4d", "card-light": "#F4F5F7", "card-dark": "#1c2431", success: "#36B37E", danger: "#FF5630", warning: "#FFAB00"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="sticky top-0 z-10 bg-primary px-4 pb-4 pt-3 text-white">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold">Checkpoint de Célula</h1>
+<img alt="User profile avatar" class="h-10 w-10 object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk9Y4XRVO21maeaDuCk4TQfZs_qVl__cavXot4q6rOKcsCvFYt02Y8OfJ3s1X_QGDrsVtJoNcUbTqG4hg8ozZWk6m0m8F7ZMNqa3vJk91tI5MY8hjIv4SWuQFmaW-dLUwXAwXyHlTV0sYzhraxHGyFK-fNtN7pks9GP23_6Bz9KPyWz9RMv6MdErsdTa-m7JkoCoBv-Lk9J5K2YLT-KDo9uF108uJdlT1EJYqhOiTXSp4iRmItlej_5uj2KywYUUokMahPgVhsULw"/>
+</div>
+<p class="mt-1 text-sm opacity-80">Resumo de atividade</p>
+</header>
+<main class="flex-1 pb-24">
+<div class="flex w-full flex-row items-center justify-center gap-2 py-4">
+<div class="h-1.5 w-6 bg-border-light dark:bg-border-dark"></div>
+<div class="h-1.5 w-6 bg-border-light dark:bg-border-dark"></div>
+<div class="h-1.5 w-6 bg-primary"></div>
+</div>
+<section class="p-4">
+<h2 class="text-lg font-bold">Dashboard Overview</h2>
+<div class="mt-3 grid grid-cols-2 gap-4">
+<div class="flex flex-col border border-border-light bg-background-light p-4 dark:border-border-dark dark:bg-background-dark">
+<span class="material-symbols-outlined text-primary">groups</span>
+<p class="mt-2 text-3xl font-bold">124</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Total Members</p>
+</div>
+<div class="flex flex-col border border-border-light bg-background-light p-4 dark:border-border-dark dark:bg-background-dark">
+<span class="material-symbols-outlined text-primary">person_check</span>
+<p class="mt-2 text-3xl font-bold">86</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">F.A.</p>
+</div>
+<div class="flex flex-col border border-border-light bg-background-light p-4 dark:border-border-dark dark:bg-background-dark">
+<span class="material-symbols-outlined text-primary">event_upcoming</span>
+<p class="mt-2 text-3xl font-bold">3</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Upcoming Meetings</p>
+</div>
+<div class="flex flex-col border border-border-light bg-background-light p-4 dark:border-border-dark dark:bg-background-dark">
+<span class="material-symbols-outlined text-primary">description</span>
+<p class="mt-2 text-3xl font-bold">2</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Pending Reports</p>
+</div>
+</div>
+</section>
+<section class="px-4 pt-4">
+<h2 class="text-lg font-bold">Presence Check-in</h2>
+<div class="mt-3 flex flex-col gap-3">
+<div class="flex items-center border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark">
+<img alt="Profile photo of John Doe" class="h-20 w-20 flex-shrink-0 object-cover" data-alt="Profile photo of John Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpqxescCAWrpzKmXew6hBeDJCjUu0z8nCTS8Uden4ixJYGOrS8N718mIjHUAnrueuDNu7GCOI0Dn4xpqRvs6gSV7fwTh49V_iVgqQFp5MRRa_G6IfNbIKXCxr8ANOkISI1k54RmAC2FE2gu2bn0JDT6-jCwKjuxMhozg-2mKZF3uH3UVO_jTbDSZbo17L3m2WC_15ZNKRCYDnCsA7J5BT_Q3Zyhb4KXXExypegcW8mMIGLYMbeObJcD5I1K3t6un5ivSwkPwCd978"/>
+<div class="flex-1 px-4">
+<p class="font-semibold">John Doe</p>
+<p class="text-sm text-success">Present</p>
+</div>
+<div class="w-2 self-stretch bg-success"></div>
+</div>
+<div class="flex items-center border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark">
+<img alt="Profile photo of Jane Smith" class="h-20 w-20 flex-shrink-0 object-cover" data-alt="Profile photo of Jane Smith" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADB0BpYav_8VAMxQAVtpxtJPZSiOB_3a68R-bAMprJNuhw9hFqZB09Ko8ePCVtffLfzTMWR1PaJllkBfS7Y5_VVUjhri4LZQs3jf9fKg84cFn2MP8Dhj0eIFTgrxqTo0rejwbgHjRX6C0D_tNLffbck3O4EKGyh4u7iGqwyXMVTvS8Ar-1O_qbmOtePhUNIutc60SW77ZQ10zZxsLOBhISQEmPkkXsz5eWNyZXNIbBCxmpAVyGXWZqLGrNa7bgCRsG1F6bcXu1xpA"/>
+<div class="flex-1 px-4">
+<p class="font-semibold">Jane Smith</p>
+<p class="text-sm text-danger">Absent</p>
+</div>
+<div class="w-2 self-stretch bg-danger"></div>
+</div>
+<div class="flex items-center border border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark">
+<img alt="Profile photo of Alex Johnson" class="h-20 w-20 flex-shrink-0 object-cover" data-alt="Profile photo of Alex Johnson" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVgSbx_uy1JZvjRe_r8OIYxlqJF_Xho2n9hh4WDa4A89ydAd2q-uxHdaJb88oyo48QUhAhPQOB-qtGnoZ5JUxsTjEsWINpoouEY5TT-2vBNyL_ij14rjL9loo4GGPxxc2_cO5kaXR4eG_C2_G7WyFIlTbvMNmA9JDhJO2_-sMdfA6y10ZOx-UeM-EbAM6p7RU_70hCn9yWDPAyG5tnWQGLdf-vfLJXOGXzThPm3YGnIUFSr2XN-ZH9i4wBzHdNv16YsY6VxUIx7DE"/>
+<div class="flex-1 px-4">
+<p class="font-semibold">Alex Johnson</p>
+<p class="text-sm text-success">Present</p>
+</div>
+<div class="w-2 self-stretch bg-success"></div>
+</div>
+</div>
+</section>
+<section class="px-4 pt-6">
+<h2 class="text-lg font-bold">Recent Reports</h2>
+<div class="mt-3 flex flex-col gap-0.5">
+<div class="flex items-center bg-card-light p-4 dark:bg-card-dark">
+<span class="material-symbols-outlined text-primary">summarize</span>
+<div class="ml-4 flex-1">
+<p class="font-medium">Weekly Attendance Summary</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Oct 27, 2023</p>
+</div>
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+<div class="flex items-center bg-card-light p-4 dark:bg-card-dark">
+<span class="material-symbols-outlined text-primary">event_note</span>
+<div class="ml-4 flex-1">
+<p class="font-medium">Meeting Minutes - Oct 26</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Oct 26, 2023</p>
+</div>
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</section>
+<section class="px-4 pt-6">
+<h2 class="text-lg font-bold">Alerts</h2>
+<div class="mt-3 flex flex-col gap-3">
+<div class="flex border-l-4 border-primary bg-card-light p-4 dark:bg-card-dark">
+<div class="flex-1">
+<p class="font-semibold">New Member Added</p>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">Maria Garcia has joined the team.</p>
+</div>
+</div>
+<div class="flex border-l-4 border-warning bg-card-light p-4 dark:bg-card-dark">
+<div class="flex-1">
+<p class="font-semibold">System Maintenance Notice</p>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">Scheduled maintenance on Nov 5th, 2am.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Botão de chat que será utilzado para futuramente agente de IA para consltas O tamplate esta em checkpoint_alert.html -->
+<button class="fixed bottom-20 right-4 flex h-14 w-14 items-center justify-center bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined !text-3xl">Balão de Chat de Contacto</span>
+</button>
+<footer class="fixed bottom-0 left-0 z-10 w-full border-t border-border-light bg-background-light dark:border-border-dark dark:bg-background-dark">
+<nav class="grid grid-cols-4">
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined !text-2xl">home</span>
+<span class="text-xs font-semibold">Início</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-text-secondary-light dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined !text-2xl">group</span>
+<span class="text-xs font-medium">Membros</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-text-secondary-light dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined !text-2xl">assessment</span>
+<span class="text-xs font-medium">Relatórios</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-text-secondary-light dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined !text-2xl">settings</span>
+<span class="text-xs font-medium">Ajustes</span>
+</a>
+</nav>
+</footer>
+</div>
+</body></html>

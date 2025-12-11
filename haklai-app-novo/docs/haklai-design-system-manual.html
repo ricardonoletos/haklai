@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haklai Design System - Manual de Componentes</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Material Icons (Opcional) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           DESIGN TOKENS (VARIÁVEIS CSS)
+           ======================================== */
+        :root {
+            /* === COR PRIMÁRIA (Gradiente Azul/Roxo) === */
+            --haklai-primary: #667eea;
+            --haklai-primary-dark: #764ba2;
+            --haklai-primary-hover: #5568d3;
+            --haklai-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --haklai-primary-alpha-10: rgba(102, 126, 234, 0.1);
+            --haklai-primary-alpha-20: rgba(102, 126, 234, 0.2);
+            
+            /* === CORES DE ESTADO === */
+            --haklai-success: #36B37E;
+            --haklai-success-light: #86efac;
+            --haklai-success-bg: #dcfce7;
+            --haklai-success-text: #15803d;
+            
+            --haklai-danger: #FF5630;
+            --haklai-danger-light: #fca5a5;
+            --haklai-danger-bg: #fee2e2;
+            --haklai-danger-text: #991b1b;
+            
+            --haklai-warning: #FFAB00;
+            --haklai-warning-light: #fde047;
+            --haklai-warning-bg: #fef9c3;
+            --haklai-warning-text: #713f12;
+            
+            --haklai-info: #2b8cce;
+            --haklai-info-light: #93c5fd;
+            --haklai-info-bg: #dbeafe;
+            --haklai-info-text: #1e40af;
+            
+            /* === BACKGROUNDS === */
+            --haklai-bg-primary: #f7fafc;
+            --haklai-bg-secondary: #edf2f7;
+            --haklai-bg-card: #ffffff;
+            --haklai-bg-input: #f1f5f9;
+            
+            /* === TEXTO === */
+            --haklai-text-primary: #334155;
+            --haklai-text-secondary: #64748b;
+            --haklai-text-tertiary: #94a3b8;
+            --haklai-text-heading: #1e293b;
+            
+            /* === BORDAS === */
+            --haklai-border: #e2e8f0;
+            --haklai-border-dark: #cbd5e1;
+            
+            /* === BORDER RADIUS === */
+            --haklai-radius-xs: 4px;
+            --haklai-radius-sm: 8px;
+            --haklai-radius-md: 12px;
+            --haklai-radius-lg: 16px;
+            --haklai-radius-xl: 20px;
+            --haklai-radius-full: 9999px;
+            
+            /* === SOMBRAS === */
+            --haklai-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --haklai-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --haklai-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --haklai-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            
+            /* === TIPOGRAFIA === */
+            --haklai-font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            --haklai-font-family-alt: 'Manrope', 'Inter', sans-serif;
+            
+            --haklai-font-weight-light: 300;
+            --haklai-font-weight-normal: 400;
+            --haklai-font-weight-medium: 500;
+            --haklai-font-weight-semibold: 600;
+            --haklai-font-weight-bold: 700;
+            --haklai-font-weight-extrabold: 800;
+            
+            --haklai-text-xs: 0.75rem;    /* 12px */
+            --haklai-text-sm: 0.875rem;   /* 14px */
+            --haklai-text-base: 1rem;     /* 16px */
+            --haklai-text-lg: 1.125rem;   /* 18px */
+            --haklai-text-xl: 1.25rem;    /* 20px */
+            --haklai-text-2xl: 1.5rem;    /* 24px */
+            --haklai-text-3xl: 1.875rem;  /* 30px */
+            --haklai-text-4xl: 2.25rem;   /* 36px */
+            
+            --haklai-leading-normal: 1.5;
+            --haklai-leading-relaxed: 1.75;
+            
+            /* === ESPAÇAMENTOS === */
+            --haklai-spacing-1: 0.25rem;  /* 4px */
+            --haklai-spacing-2: 0.5rem;   /* 8px */
+            --haklai-spacing-3: 0.75rem;  /* 12px */
+            --haklai-spacing-4: 1rem;     /* 16px */
+            --haklai-spacing-6: 1.5rem;   /* 24px */
+            --haklai-spacing-8: 2rem;     /* 32px */
+            
+            /* === TRANSIÇÕES === */
+            --haklai-transition-fast: 0.15s ease;
+            --haklai-transition-base: 0.2s ease;
+            --haklai-transition-slow: 0.3s ease;
+        }
+        
+        /* ========================================
+           RESET E BASE
+           ======================================== */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--haklai-font-family);
+            background: var(--haklai-bg-primary);
+            color: var(--haklai-text-primary);
+            line-height: var(--haklai-leading-normal);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* ========================================
+           LAYOUT DO MANUAL
+           ======================================== */
+        .manual-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--haklai-spacing-8);
+        }
+        
+        .manual-header {
+            background: var(--haklai-primary-gradient);
+            color: white;
+            padding: var(--haklai-spacing-8);
+            border-radius: var(--haklai-radius-lg);
+            margin-bottom: var(--haklai-spacing-8);
+            text-align: center;
+            box-shadow: var(--haklai-shadow-lg);
+        }
+        
+        .manual-header h1 {
+            font-size: var(--haklai-text-4xl);
+            font-weight: var(--haklai-font-weight-extrabold);
+            margin: 0 0 var(--haklai-spacing-2) 0;
+        }
+        
+        .manual-header p {
+            font-size: var(--haklai-text-lg);
+            opacity: 0.95;
+            margin: 0;
+        }
+        
+        .section {
+            background: var(--haklai-bg-card);
+            border-radius: var(--haklai-radius-lg);
+            padding: var(--haklai-spacing-8);
+            margin-bottom: var(--haklai-spacing-8);
+            box-shadow: var(--haklai-shadow-md);
+        }
+        
+        .section-title {
+            font-size: var(--haklai-text-2xl);
+            font-weight: var(--haklai-font-weight-bold);
+            color: var(--haklai-text-heading);
+            margin: 0 0 var(--haklai-spacing-6) 0;
+            padding-bottom: var(--haklai-spacing-4);
+            border-bottom: 2px solid var(--haklai-border);
+        }
+        
+        .section-subtitle {
+            font-size: var(--haklai-text-xl);
+            font-weight: var(--haklai-font-weight-semibold);
+            color: var(--haklai-text-heading);
+            margin: var(--haklai-spacing-6) 0 var(--haklai-spacing-4) 0;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--haklai-spacing-6);
+            margin-bottom: var(--haklai-spacing-6);
+        }
+        
+        .component-box {
+            background: var(--haklai-bg-primary);
+            border: 1px solid var(--haklai-border);
+            border-radius: var(--haklai-radius-md);
+            padding: var(--haklai-spacing-4);
+        }
+        
+        .component-label {
+            font-size: var(--haklai-text-sm);
+            font-weight: var(--haklai-font-weight-semibold);
+            color: var(--haklai-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--haklai-spacing-2);
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: var(--haklai-spacing-4);
+            border-radius: var(--haklai-radius-sm);
+            font-family: 'Courier New', monospace;
+            font-size: var(--haklai-text-sm);
+            overflow-x: auto;
+            margin: var(--haklai-spacing-4) 0;
+        }
+        
+        /* ========================================
+           COMPONENTES: BOTÕES
+           ======================================== */
+        .haklai-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--haklai-spacing-2);
+            padding: var(--haklai-spacing-3) var(--haklai-spacing-6);
+            font-family: var(--haklai-font-family);
+            font-size: var(--haklai-text-sm);
+            font-weight: var(--haklai-font-weight-semibold);
+            line-height: var(--haklai-leading-normal);
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: none;
+            border-radius: var(--haklai-radius-md);
+            transition: all var(--haklai-transition-base);
+            min-height: 40px;
+        }
+        
+        .haklai-btn:focus {
+            outline: 2px solid var(--haklai-primary);
+            outline-offset: 2px;
+        }
+        
+        .haklai-btn:disabled,
+        .haklai-btn.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .haklai-btn-primary {
+            background: var(--haklai-primary-gradient);
+            color: #ffffff;
+        }
+        
+        .haklai-btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--haklai-shadow-lg);
+        }
+        
+        .haklai-btn-primary:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: var(--haklai-shadow-sm);
+        }
+        
+        .haklai-btn-secondary {
+            background: #e2e8f0;
+            color: var(--haklai-text-primary);
+        }
+        
+        .haklai-btn-secondary:hover:not(:disabled) {
+            background: #cbd5e1;
+        }
+        
+        .haklai-btn-success {
+            background: var(--haklai-success);
+            color: #ffffff;
+        }
+        
+        .haklai-btn-success:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .haklai-btn-danger {
+            background: var(--haklai-danger);
+            color: #ffffff;
+        }
+        
+        .haklai-btn-danger:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .haklai-btn-warning {
+            background: var(--haklai-warning);
+            color: #ffffff;
+        }
+        
+        .haklai-btn-warning:hover:not(:disabled) {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .haklai-btn-outline {
+            background: transparent;
+            border: 2px solid var(--haklai-primary);
+            color: var(--haklai-primary);
+        }
+        
+        .haklai-btn-outline:hover:not(:disabled) {
+            background: var(--haklai-primary);
+            color: #ffffff;
+        }
+        
+        .haklai-btn-sm {
+            padding: var(--haklai-spacing-2) var(--haklai-spacing-4);
+            font-size: var(--haklai-text-xs);
+            min-height: 32px;
+        }
+        
+        .haklai-btn-lg {
+            padding: var(--haklai-spacing-4) var(--haklai-spacing-8);
+            font-size: var(--haklai-text-base);
+            min-height: 48px;
+        }
+        
+        /* ========================================
+           COMPONENTES: FORMULÁRIOS
+           ======================================== */
+        .haklai-form-group {
+            margin-bottom: var(--haklai-spacing-6);
+        }
+        
+        .haklai-label {
+            display: block;
+            font-size: var(--haklai-text-sm);
+            font-weight: var(--haklai-font-weight-medium);
+            color: var(--haklai-text-heading);
+            margin-bottom: var(--haklai-spacing-2);
+        }
+        
+        .haklai-label .required {
+            color: var(--haklai-danger);
+            margin-left: var(--haklai-spacing-1);
+        }
+        
+        .haklai-input,
+        .haklai-select,
+        .haklai-textarea {
+            width: 100%;
+            padding: var(--haklai-spacing-3);
+            font-family: var(--haklai-font-family);
+            font-size: var(--haklai-text-base);
+            color: var(--haklai-text-heading);
+            background-color: var(--haklai-bg-input);
+            border: 2px solid var(--haklai-border);
+            border-radius: var(--haklai-radius-sm);
+            transition: all var(--haklai-transition-base);
+        }
+        
+        .haklai-input:focus,
+        .haklai-select:focus,
+        .haklai-textarea:focus {
+            outline: none;
+            border-color: var(--haklai-primary);
+            box-shadow: 0 0 0 3px var(--haklai-primary-alpha-10);
+            background-color: #ffffff;
+        }
+        
+        .haklai-input:invalid,
+        .haklai-select:invalid,
+        .haklai-textarea:invalid {
+            border-color: var(--haklai-danger);
+        }
+        
+        .haklai-input::placeholder {
+            color: var(--haklai-text-tertiary);
+        }
+        
+        .haklai-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .haklai-form-help {
+            font-size: var(--haklai-text-sm);
+            color: var(--haklai-text-secondary);
+            margin-top: var(--haklai-spacing-2);
+        }
+        
+        .haklai-checkbox,
+        .haklai-radio {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--haklai-primary);
+            cursor: pointer;
+        }
+        
+        .haklai-checkbox-label,
+        .haklai-radio-label {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--haklai-spacing-2);
+            font-size: var(--haklai-text-base);
+            color: var(--haklai-text-primary);
+            cursor: pointer;
+            margin-right: var(--haklai-spacing-4);
+        }
+        
+        /* ========================================
+           COMPONENTES: ALERTAS
+           ======================================== */
+        .haklai-alert {
+            padding: var(--haklai-spacing-4);
+            border-radius: var(--haklai-radius-md);
+            margin-bottom: var(--haklai-spacing-4);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--haklai-spacing-3);
+            border-left: 4px solid;
+        }
+        
+        .haklai-alert-success {
+            background: var(--haklai-success-bg);
+            color: var(--haklai-success-text);
+            border-color: var(--haklai-success);
+        }
+        
+        .haklai-alert-danger {
+            background: var(--haklai-danger-bg);
+            color: var(--haklai-danger-text);
+            border-color: var(--haklai-danger);
+        }
+        
+        .haklai-alert-warning {
+            background: var(--haklai-warning-bg);
+            color: var(--haklai-warning-text);
+            border-color: var(--haklai-warning);
+        }
+        
+        .haklai-alert-info {
+            background: var(--haklai-info-bg);
+            color: var(--haklai-info-text);
+            border-color: var(--haklai-info);
+        }
+        
+        /* ========================================
+           COMPONENTES: CARDS
+           ======================================== */
+        .haklai-card {
+            background: var(--haklai-bg-card);
+            border: 1px solid var(--haklai-border);
+            border-radius: var(--haklai-radius-lg);
+            padding: var(--haklai-spacing-6);
+            box-shadow: var(--haklai-shadow-md);
+            transition: all var(--haklai-transition-base);
+        }
+        
+        .haklai-card:hover {
+            box-shadow: var(--haklai-shadow-lg);
+        }
+        
+        .haklai-card-header {
+            font-size: var(--haklai-text-xl);
+            font-weight: var(--haklai-font-weight-semibold);
+            color: var(--haklai-text-heading);
+            margin-bottom: var(--haklai-spacing-4);
+            padding-bottom: var(--haklai-spacing-4);
+            border-bottom: 1px solid var(--haklai-border);
+        }
+        
+        .haklai-card-body {
+            color: var(--haklai-text-primary);
+        }
+        
+        .haklai-card-footer {
+            margin-top: var(--haklai-spacing-4);
+            padding-top: var(--haklai-spacing-4);
+            border-top: 1px solid var(--haklai-border);
+        }
+        
+        /* ========================================
+           COMPONENTES: BADGES
+           ======================================== */
+        .haklai-badge {
+            display: inline-block;
+            padding: var(--haklai-spacing-1) var(--haklai-spacing-3);
+            font-size: var(--haklai-text-xs);
+            font-weight: var(--haklai-font-weight-semibold);
+            border-radius: var(--haklai-radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+        
+        .haklai-badge-primary {
+            background: var(--haklai-primary);
+            color: #ffffff;
+        }
+        
+        .haklai-badge-success {
+            background: var(--haklai-success-bg);
+            color: var(--haklai-success-text);
+        }
+        
+        .haklai-badge-danger {
+            background: var(--haklai-danger-bg);
+            color: var(--haklai-danger-text);
+        }
+        
+        .haklai-badge-warning {
+            background: var(--haklai-warning-bg);
+            color: var(--haklai-warning-text);
+        }
+        
+        /* ========================================
+           COMPONENTES: TABELAS
+           ======================================== */
+        .haklai-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--haklai-bg-card);
+            border-radius: var(--haklai-radius-md);
+            overflow: hidden;
+            box-shadow: var(--haklai-shadow-sm);
+        }
+        
+        .haklai-table thead {
+            background: var(--haklai-primary-gradient);
+            color: #ffffff;
+        }
+        
+        .haklai-table th {
+            padding: var(--haklai-spacing-4);
+            text-align: left;
+            font-weight: var(--haklai-font-weight-semibold);
+            font-size: var(--haklai-text-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .haklai-table td {
+            padding: var(--haklai-spacing-4);
+            border-bottom: 1px solid var(--haklai-border);
+        }
+        
+        .haklai-table tbody tr:hover {
+            background: var(--haklai-bg-primary);
+        }
+        
+        .haklai-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* ========================================
+           COMPONENTES: MODAL
+           ======================================== */
+        .haklai-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .haklai-modal-overlay.active {
+            display: flex;
+        }
+        
+        .haklai-modal {
+            background: var(--haklai-bg-card);
+            border-radius: var(--haklai-radius-lg);
+            padding: var(--haklai-spacing-8);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--haklai-shadow-xl);
+        }
+        
+        .haklai-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--haklai-spacing-6);
+            padding-bottom: var(--haklai-spacing-4);
+            border-bottom: 1px solid var(--haklai-border);
+        }
+        
+        .haklai-modal-title {
+            font-size: var(--haklai-text-2xl);
+            font-weight: var(--haklai-font-weight-bold);
+            color: var(--haklai-text-heading);
+            margin: 0;
+        }
+        
+        .haklai-modal-close {
+            background: none;
+            border: none;
+            font-size: var(--haklai-text-2xl);
+            color: var(--haklai-text-secondary);
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--haklai-radius-sm);
+            transition: all var(--haklai-transition-base);
+        }
+        
+        .haklai-modal-close:hover {
+            background: var(--haklai-bg-primary);
+            color: var(--haklai-text-primary);
+        }
+        
+        /* ========================================
+           COMPONENTES: PAGINAÇÃO
+           ======================================== */
+        .haklai-pagination {
+            display: flex;
+            gap: var(--haklai-spacing-2);
+            align-items: center;
+            justify-content: center;
+            margin: var(--haklai-spacing-6) 0;
+        }
+        
+        .haklai-pagination-item {
+            padding: var(--haklai-spacing-2) var(--haklai-spacing-4);
+            border: 1px solid var(--haklai-border);
+            border-radius: var(--haklai-radius-sm);
+            background: var(--haklai-bg-card);
+            color: var(--haklai-text-primary);
+            text-decoration: none;
+            transition: all var(--haklai-transition-base);
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .haklai-pagination-item:hover:not(.active):not(.disabled) {
+            background: var(--haklai-primary);
+            color: #ffffff;
+            border-color: var(--haklai-primary);
+        }
+        
+        .haklai-pagination-item.active {
+            background: var(--haklai-primary-gradient);
+            color: #ffffff;
+            border-color: var(--haklai-primary);
+        }
+        
+        .haklai-pagination-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* ========================================
+           BACKGROUNDS E CONTAINERS
+           ======================================== */
+        .haklai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--haklai-spacing-8);
+        }
+        
+        .haklai-bg-primary {
+            background: var(--haklai-bg-primary);
+        }
+        
+        .haklai-bg-secondary {
+            background: var(--haklai-bg-secondary);
+        }
+        
+        .haklai-bg-gradient {
+            background: var(--haklai-primary-gradient);
+        }
+        
+        .haklai-header {
+            background: var(--haklai-primary-gradient);
+            color: #ffffff;
+            padding: var(--haklai-spacing-8);
+            border-radius: var(--haklai-radius-lg);
+            margin-bottom: var(--haklai-spacing-6);
+        }
+        
+        /* ========================================
+           UTILITÁRIOS
+           ======================================== */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        
+        .mb-4 { margin-bottom: var(--haklai-spacing-4); }
+        .mb-6 { margin-bottom: var(--haklai-spacing-6); }
+        .mt-4 { margin-top: var(--haklai-spacing-4); }
+        .mt-6 { margin-top: var(--haklai-spacing-6); }
+        
+        .d-flex { display: flex; }
+        .align-items-center { align-items: center; }
+        .justify-content-between { justify-content: space-between; }
+        .gap-2 { gap: var(--haklai-spacing-2); }
+        .gap-4 { gap: var(--haklai-spacing-4); }
+        
+        /* ========================================
+           DEMONSTRAÇÃO DE ESTADOS DOS BOTÕES
+           ======================================== */
+        .haklai-btn-demo-hover {
+            transform: translateY(-2px) !important;
+            box-shadow: var(--haklai-shadow-lg) !important;
+        }
+        
+        .haklai-btn-demo-active {
+            transform: translateY(0) !important;
+            box-shadow: var(--haklai-shadow-sm) !important;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
+    <div class="manual-container">
+        <!-- Header -->
+        <div class="manual-header">
+            <h1>⛪ Haklai Design System</h1>
+            <p>Manual Completo de Componentes e Padrões Visuais</p>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 1: DESIGN TOKENS (VARIÁVEIS)
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">1. Design Tokens (Variáveis CSS)</h2>
+            
+            <div class="code-block">
+:root {
+    /* COR PRIMÁRIA */
+    --haklai-primary: #667eea;
+    --haklai-primary-dark: #764ba2;
+    --haklai-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* CORES DE ESTADO */
+    --haklai-success: #36B37E;
+    --haklai-danger: #FF5630;
+    --haklai-warning: #FFAB00;
+    --haklai-info: #2b8cce;
+    
+    /* BACKGROUNDS */
+    --haklai-bg-primary: #f7fafc;
+    --haklai-bg-card: #ffffff;
+    
+    /* TIPOGRAFIA */
+    --haklai-font-family: 'Inter', 'Segoe UI', sans-serif;
+    --haklai-text-base: 1rem;
+    
+    /* BORDER RADIUS */
+    --haklai-radius-sm: 8px;
+    --haklai-radius-md: 12px;
+    --haklai-radius-lg: 16px;
+}
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 2: TIPOGRAFIA
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">2. Tipografia</h2>
+            
+            <div class="component-box">
+                <div class="component-label">Fonte Principal</div>
+                <p style="font-family: var(--haklai-font-family); font-size: var(--haklai-text-2xl);">
+                    Inter - A fonte padrão do sistema Haklai
+                </p>
+                <div class="code-block">
+font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+                </div>
+            </div>
+            
+            <div class="component-box">
+                <div class="component-label">Fonte Alternativa</div>
+                <p style="font-family: var(--haklai-font-family-alt); font-size: var(--haklai-text-2xl);">
+                    Manrope - Fonte alternativa para versões V2
+                </p>
+                <div class="code-block">
+font-family: 'Manrope', 'Inter', sans-serif;
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Tamanhos de Fonte</h3>
+            <div class="component-grid">
+                <div class="component-box">
+                    <div class="component-label">XS (12px)</div>
+                    <p style="font-size: var(--haklai-text-xs);">Texto extra pequeno</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">SM (14px)</div>
+                    <p style="font-size: var(--haklai-text-sm);">Texto pequeno</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">BASE (16px)</div>
+                    <p style="font-size: var(--haklai-text-base);">Texto padrão</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">LG (18px)</div>
+                    <p style="font-size: var(--haklai-text-lg);">Texto grande</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">XL (20px)</div>
+                    <p style="font-size: var(--haklai-text-xl);">Texto extra grande</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">2XL (24px)</div>
+                    <p style="font-size: var(--haklai-text-2xl);">Título médio</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">3XL (30px)</div>
+                    <p style="font-size: var(--haklai-text-3xl);">Título grande</p>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">4XL (36px)</div>
+                    <p style="font-size: var(--haklai-text-4xl);">Título extra grande</p>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Pesos de Fonte</h3>
+            <div class="component-grid">
+                <div class="component-box">
+                    <p style="font-weight: var(--haklai-font-weight-light);">Light (300)</p>
+                </div>
+                <div class="component-box">
+                    <p style="font-weight: var(--haklai-font-weight-normal);">Normal (400)</p>
+                </div>
+                <div class="component-box">
+                    <p style="font-weight: var(--haklai-font-weight-medium);">Medium (500)</p>
+                </div>
+                <div class="component-box">
+                    <p style="font-weight: var(--haklai-font-weight-semibold);">Semibold (600)</p>
+                </div>
+                <div class="component-box">
+                    <p style="font-weight: var(--haklai-font-weight-bold);">Bold (700)</p>
+                </div>
+                <div class="component-box">
+                    <p style="font-weight: var(--haklai-font-weight-extrabold);">Extrabold (800)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 3: BOTÕES
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">3. Botões</h2>
+            
+            <h3 class="section-subtitle">Tipos de Botões</h3>
+            <div class="component-grid">
+                <div class="component-box">
+                    <div class="component-label">Primary</div>
+                    <button class="haklai-btn haklai-btn-primary">Botão Primary</button>
+                    <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-primary"&gt;
+    Botão Primary
+&lt;/button&gt;
+                    </div>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">Secondary</div>
+                    <button class="haklai-btn haklai-btn-secondary">Botão Secondary</button>
+                    <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-secondary"&gt;
+    Botão Secondary
+&lt;/button&gt;
+                    </div>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">Success</div>
+                    <button class="haklai-btn haklai-btn-success">Botão Success</button>
+                    <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-success"&gt;
+    Botão Success
+&lt;/button&gt;
+                    </div>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">Danger</div>
+                    <button class="haklai-btn haklai-btn-danger">Botão Danger</button>
+                    <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-danger"&gt;
+    Botão Danger
+&lt;/button&gt;
+                    </div>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">Warning</div>
+                    <button class="haklai-btn haklai-btn-warning">Botão Warning</button>
+                    <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-warning"&gt;
+    Botão Warning
+&lt;/button&gt;
+                    </div>
+                </div>
+                <div class="component-box">
+                    <div class="component-label">Outline</div>
+                    <button class="haklai-btn haklai-btn-outline">Botão Outline</button>
+                    <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-outline"&gt;
+    Botão Outline
+&lt;/button&gt;
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Tamanhos de Botões</h3>
+            <div class="component-box">
+                <button class="haklai-btn haklai-btn-primary haklai-btn-sm">Small</button>
+                <button class="haklai-btn haklai-btn-primary">Normal</button>
+                <button class="haklai-btn haklai-btn-primary haklai-btn-lg">Large</button>
+                <div class="code-block">
+&lt;button class="haklai-btn haklai-btn-primary haklai-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="haklai-btn haklai-btn-primary"&gt;Normal&lt;/button&gt;
+&lt;button class="haklai-btn haklai-btn-primary haklai-btn-lg"&gt;Large&lt;/button&gt;
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Estados dos Botões</h3>
+            <div class="component-box">
+                <div class="component-label">Normal</div>
+                <button class="haklai-btn haklai-btn-primary">Normal</button>
+                
+                <div class="component-label mt-4">Hover (passe o mouse)</div>
+                <button class="haklai-btn haklai-btn-primary haklai-btn-demo-hover">Hover</button>
+                <p class="haklai-form-help" style="margin-top: var(--haklai-spacing-2);">
+                    <i class="fas fa-info-circle"></i> Este botão está com estilo de hover aplicado para demonstração
+                </p>
+                
+                <div class="component-label mt-4">Active (clique e segure)</div>
+                <button class="haklai-btn haklai-btn-primary haklai-btn-demo-active">Active</button>
+                <p class="haklai-form-help" style="margin-top: var(--haklai-spacing-2);">
+                    <i class="fas fa-info-circle"></i> Este botão está com estilo de active aplicado para demonstração
+                </p>
+                
+                <div class="component-label mt-4">Disabled</div>
+                <button class="haklai-btn haklai-btn-primary" disabled>Disabled</button>
+                
+                <div class="component-label mt-4">Com Ícone</div>
+                <button class="haklai-btn haklai-btn-primary">
+                    <i class="fas fa-save"></i>
+                    Salvar
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 4: FORMULÁRIOS
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">4. Formulários</h2>
+            
+            <h3 class="section-subtitle">Inputs de Texto</h3>
+            <div class="component-box">
+                <div class="haklai-form-group">
+                    <label class="haklai-label">Nome Completo <span class="required">*</span></label>
+                    <input type="text" class="haklai-input" placeholder="Digite seu nome">
+                    <p class="haklai-form-help">Este campo é obrigatório</p>
+                </div>
+                
+                <div class="haklai-form-group">
+                    <label class="haklai-label">Email</label>
+                    <input type="email" class="haklai-input" placeholder="email@exemplo.com">
+                </div>
+                
+                <div class="code-block">
+&lt;div class="haklai-form-group"&gt;
+    &lt;label class="haklai-label"&gt;Nome &lt;span class="required"&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;input type="text" class="haklai-input" placeholder="Digite seu nome"&gt;
+    &lt;p class="haklai-form-help"&gt;Texto de ajuda&lt;/p&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Select (Dropdown)</h3>
+            <div class="component-box">
+                <div class="haklai-form-group">
+                    <label class="haklai-label">Selecione uma opção</label>
+                    <select class="haklai-select">
+                        <option>Opção 1</option>
+                        <option>Opção 2</option>
+                        <option>Opção 3</option>
+                    </select>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Textarea</h3>
+            <div class="component-box">
+                <div class="haklai-form-group">
+                    <label class="haklai-label">Mensagem</label>
+                    <textarea class="haklai-textarea" placeholder="Digite sua mensagem"></textarea>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Checkbox e Radio</h3>
+            <div class="component-box">
+                <div class="haklai-form-group">
+                    <label class="haklai-checkbox-label">
+                        <input type="checkbox" class="haklai-checkbox">
+                        Aceito os termos
+                    </label>
+                    <label class="haklai-checkbox-label">
+                        <input type="checkbox" class="haklai-checkbox">
+                        Receber notificações
+                    </label>
+                </div>
+                
+                <div class="haklai-form-group">
+                    <label class="haklai-radio-label">
+                        <input type="radio" name="option" class="haklai-radio">
+                        Opção A
+                    </label>
+                    <label class="haklai-radio-label">
+                        <input type="radio" name="option" class="haklai-radio">
+                        Opção B
+                    </label>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Estados do Input (Focus)</h3>
+            <div class="component-box">
+                <div class="haklai-form-group">
+                    <label class="haklai-label">Clique no campo para ver o focus</label>
+                    <input type="text" class="haklai-input" placeholder="Clique aqui">
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 5: ALERTAS
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">5. Alertas</h2>
+            
+            <div class="component-grid">
+                <div class="component-box">
+                    <div class="component-label">Success</div>
+                    <div class="haklai-alert haklai-alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>Sucesso!</strong>
+                            <p style="margin: 0; font-size: var(--haklai-text-sm);">Operação realizada com sucesso.</p>
+                        </div>
+                    </div>
+                    <div class="code-block">
+&lt;div class="haklai-alert haklai-alert-success"&gt;
+    &lt;i class="fas fa-check-circle"&gt;&lt;/i&gt;
+    &lt;div&gt;Mensagem de sucesso&lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                </div>
+                
+                <div class="component-box">
+                    <div class="component-label">Danger</div>
+                    <div class="haklai-alert haklai-alert-danger">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <div>
+                            <strong>Erro!</strong>
+                            <p style="margin: 0; font-size: var(--haklai-text-sm);">Ocorreu um erro na operação.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-box">
+                    <div class="component-label">Warning</div>
+                    <div class="haklai-alert haklai-alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Atenção!</strong>
+                            <p style="margin: 0; font-size: var(--haklai-text-sm);">Verifique as informações.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-box">
+                    <div class="component-label">Info</div>
+                    <div class="haklai-alert haklai-alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Informação</strong>
+                            <p style="margin: 0; font-size: var(--haklai-text-sm);">Informação importante.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 6: CARDS
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">6. Cards</h2>
+            
+            <div class="component-grid">
+                <div class="component-box">
+                    <div class="haklai-card">
+                        <div class="haklai-card-header">Título do Card</div>
+                        <div class="haklai-card-body">
+                            <p>Conteúdo do card. Pode conter qualquer tipo de informação.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-box">
+                    <div class="haklai-card">
+                        <div class="haklai-card-header">Card com Footer</div>
+                        <div class="haklai-card-body">
+                            <p>Conteúdo do card.</p>
+                        </div>
+                        <div class="haklai-card-footer">
+                            <button class="haklai-btn haklai-btn-primary haklai-btn-sm">Ação</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-block">
+&lt;div class="haklai-card"&gt;
+    &lt;div class="haklai-card-header"&gt;Título&lt;/div&gt;
+    &lt;div class="haklai-card-body"&gt;
+        Conteúdo
+    &lt;/div&gt;
+    &lt;div class="haklai-card-footer"&gt;
+        Footer (opcional)
+    &lt;/div&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 7: BADGES
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">7. Badges</h2>
+            
+            <div class="component-box">
+                <span class="haklai-badge haklai-badge-primary">Primary</span>
+                <span class="haklai-badge haklai-badge-success">Success</span>
+                <span class="haklai-badge haklai-badge-danger">Danger</span>
+                <span class="haklai-badge haklai-badge-warning">Warning</span>
+                
+                <div class="code-block mt-4">
+&lt;span class="haklai-badge haklai-badge-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="haklai-badge haklai-badge-success"&gt;Success&lt;/span&gt;
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 8: TABELAS
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">8. Tabelas</h2>
+            
+            <div class="component-box">
+                <table class="haklai-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>João Silva</td>
+                            <td>joao@exemplo.com</td>
+                            <td><span class="haklai-badge haklai-badge-success">Ativo</span></td>
+                            <td>
+                                <button class="haklai-btn haklai-btn-primary haklai-btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Maria Santos</td>
+                            <td>maria@exemplo.com</td>
+                            <td><span class="haklai-badge haklai-badge-warning">Pendente</span></td>
+                            <td>
+                                <button class="haklai-btn haklai-btn-primary haklai-btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pedro Costa</td>
+                            <td>pedro@exemplo.com</td>
+                            <td><span class="haklai-badge haklai-badge-danger">Inativo</span></td>
+                            <td>
+                                <button class="haklai-btn haklai-btn-primary haklai-btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="code-block mt-4">
+&lt;table class="haklai-table"&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Coluna 1&lt;/th&gt;
+            &lt;th&gt;Coluna 2&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Dados&lt;/td&gt;
+            &lt;td&gt;Dados&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 9: PAGINAÇÃO
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">9. Paginação</h2>
+            
+            <div class="component-box">
+                <div class="haklai-pagination">
+                    <a href="#" class="haklai-pagination-item disabled">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#" class="haklai-pagination-item active">1</a>
+                    <a href="#" class="haklai-pagination-item">2</a>
+                    <a href="#" class="haklai-pagination-item">3</a>
+                    <a href="#" class="haklai-pagination-item">4</a>
+                    <a href="#" class="haklai-pagination-item">5</a>
+                    <a href="#" class="haklai-pagination-item">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+                
+                <div class="code-block mt-4">
+&lt;div class="haklai-pagination"&gt;
+    &lt;a href="#" class="haklai-pagination-item active"&gt;1&lt;/a&gt;
+    &lt;a href="#" class="haklai-pagination-item"&gt;2&lt;/a&gt;
+    &lt;a href="#" class="haklai-pagination-item"&gt;3&lt;/a&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 10: MODAL (CAIXA DE DIÁLOGO)
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">10. Modal (Caixa de Diálogo)</h2>
+            
+            <div class="component-box">
+                <button class="haklai-btn haklai-btn-primary" onclick="document.getElementById('demo-modal').classList.add('active')">
+                    Abrir Modal de Exemplo
+                </button>
+                
+                <div class="code-block mt-4">
+&lt;!-- Botão para abrir --&gt;
+&lt;button onclick="abrirModal()"&gt;Abrir Modal&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="haklai-modal-overlay" id="meu-modal"&gt;
+    &lt;div class="haklai-modal"&gt;
+        &lt;div class="haklai-modal-header"&gt;
+            &lt;h3 class="haklai-modal-title"&gt;Título&lt;/h3&gt;
+            &lt;button class="haklai-modal-close" onclick="fecharModal()"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="haklai-modal-body"&gt;
+            Conteúdo do modal
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Demo -->
+        <div class="haklai-modal-overlay" id="demo-modal" onclick="if(event.target === this) this.classList.remove('active')">
+            <div class="haklai-modal">
+                <div class="haklai-modal-header">
+                    <h3 class="haklai-modal-title">Título do Modal</h3>
+                    <button class="haklai-modal-close" onclick="document.getElementById('demo-modal').classList.remove('active')">×</button>
+                </div>
+                <div>
+                    <p>Este é um exemplo de modal. Clique fora ou no X para fechar.</p>
+                    <div class="d-flex gap-4 mt-6">
+                        <button class="haklai-btn haklai-btn-primary">Confirmar</button>
+                        <button class="haklai-btn haklai-btn-secondary" onclick="document.getElementById('demo-modal').classList.remove('active')">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 11: ÍCONES
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">11. Ícones</h2>
+            
+            <h3 class="section-subtitle">Font Awesome (Padrão)</h3>
+            <div class="component-box">
+                <div style="font-size: var(--haklai-text-2xl); display: flex; gap: var(--haklai-spacing-4); flex-wrap: wrap;">
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-home"></i>
+                    <i class="fas fa-settings"></i>
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-save"></i>
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-check"></i>
+                    <i class="fas fa-times"></i>
+                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-minus"></i>
+                    <i class="fas fa-download"></i>
+                    <i class="fas fa-upload"></i>
+                    <i class="fas fa-users"></i>
+                    <i class="fas fa-church"></i>
+                </div>
+                <div class="code-block mt-4">
+&lt;i class="fas fa-user"&gt;&lt;/i&gt;
+&lt;i class="fas fa-home"&gt;&lt;/i&gt;
+&lt;i class="fas fa-settings"&gt;&lt;/i&gt;
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Material Icons (V2 - Opcional)</h3>
+            <div class="component-box">
+                <div style="font-size: var(--haklai-text-2xl); display: flex; gap: var(--haklai-spacing-4); flex-wrap: wrap;">
+                    <span class="material-icons">person</span>
+                    <span class="material-icons">home</span>
+                    <span class="material-icons">settings</span>
+                    <span class="material-icons">search</span>
+                    <span class="material-icons">save</span>
+                    <span class="material-icons">edit</span>
+                    <span class="material-icons">delete</span>
+                </div>
+                <div class="code-block mt-4">
+&lt;span class="material-icons"&gt;person&lt;/span&gt;
+&lt;span class="material-icons"&gt;home&lt;/span&gt;
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 12: BACKGROUNDS E CONTAINERS
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">12. Backgrounds e Containers</h2>
+            
+            <h3 class="section-subtitle">Backgrounds</h3>
+            <div class="component-grid">
+                <div class="component-box haklai-bg-primary" style="padding: var(--haklai-spacing-4); border-radius: var(--haklai-radius-md);">
+                    <div class="component-label">BG Primary</div>
+                    <p>--haklai-bg-primary: #f7fafc</p>
+                </div>
+                <div class="component-box haklai-bg-secondary" style="padding: var(--haklai-spacing-4); border-radius: var(--haklai-radius-md);">
+                    <div class="component-label">BG Secondary</div>
+                    <p>--haklai-bg-secondary: #edf2f7</p>
+                </div>
+                <div class="component-box haklai-bg-gradient" style="padding: var(--haklai-spacing-4); border-radius: var(--haklai-radius-md); color: white;">
+                    <div class="component-label" style="color: white;">BG Gradient</div>
+                    <p style="color: white;">Gradiente primário</p>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Header com Gradiente</h3>
+            <div class="haklai-header">
+                <h3 style="margin: 0; color: white;">Título do Header</h3>
+                <p style="margin: var(--haklai-spacing-2) 0 0 0; opacity: 0.9; color: white;">Subtítulo opcional</p>
+            </div>
+            
+            <div class="code-block">
+&lt;div class="haklai-header"&gt;
+    &lt;h3&gt;Título&lt;/h3&gt;
+    &lt;p&gt;Subtítulo&lt;/p&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+
+        <!-- ========================================
+             SEÇÃO 13: CORES DO SISTEMA
+             ======================================== -->
+        <div class="section">
+            <h2 class="section-title">13. Paleta de Cores</h2>
+            
+            <h3 class="section-subtitle">Cores Principais</h3>
+            <div class="component-grid">
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-primary); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Primary</div>
+                    <p style="font-size: var(--haklai-text-sm);">#667eea</p>
+                </div>
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-primary-dark); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Primary Dark</div>
+                    <p style="font-size: var(--haklai-text-sm);">#764ba2</p>
+                </div>
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-primary-gradient); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Gradient</div>
+                    <p style="font-size: var(--haklai-text-sm);">#667eea → #764ba2</p>
+                </div>
+            </div>
+            
+            <h3 class="section-subtitle">Cores de Estado</h3>
+            <div class="component-grid">
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-success); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Success</div>
+                    <p style="font-size: var(--haklai-text-sm);">#36B37E</p>
+                </div>
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-danger); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Danger</div>
+                    <p style="font-size: var(--haklai-text-sm);">#FF5630</p>
+                </div>
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-warning); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Warning</div>
+                    <p style="font-size: var(--haklai-text-sm);">#FFAB00</p>
+                </div>
+                <div class="component-box">
+                    <div style="width: 100%; height: 100px; background: var(--haklai-info); border-radius: var(--haklai-radius-sm); margin-bottom: var(--haklai-spacing-2);"></div>
+                    <div class="component-label">Info</div>
+                    <p style="font-size: var(--haklai-text-sm);">#2b8cce</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Exemplo de função para abrir/fechar modal
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        
+        function fecharModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>

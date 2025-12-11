@@ -1,0 +1,985 @@
+/* Haklai Shortcodes CSS (placeholder)
+   Mantido para evitar 404; estilos podem ser adicionados conforme necessário. */
+
+/* ========================================
+   Validação de Telefone
+   ======================================== */
+
+/* Campo de telefone com validação */
+.phone-input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado válido */
+.phone-input.is-valid {
+    border-color: #28a745 !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.phone-input.is-valid:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Estado inválido */
+.phone-input.is-invalid {
+    border-color: #dc3545 !important;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.phone-input.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Feedback de validação */
+.phone-feedback {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    transition: all 0.3s ease;
+}
+
+.phone-feedback.text-success {
+    color: #28a745 !important;
+    font-weight: 500;
+}
+
+.phone-feedback.text-danger {
+    color: #dc3545 !important;
+    font-weight: 500;
+}
+
+/* Hint do telefone */
+.phone-hint {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Quando o campo está com erro, esconde o hint */
+.phone-input.is-invalid ~ .phone-hint {
+    display: none;
+}
+
+/* Animação suave ao validar */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.phone-input.is-invalid {
+    animation: shake 0.5s;
+}
+
+/* Estilos para modal */
+.modal .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal .form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.modal .invalid-feedback {
+    display: block;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+    .phone-hint {
+        font-size: 0.75rem;
+    }
+    
+    .phone-feedback {
+        font-size: 0.8125rem;
+    }
+}
+
+/* ========================================
+   Login Form Styles
+   ======================================== */
+
+/* Container principal do login */
+.haklai-login-container {
+    padding: 40px 20px !important;
+    min-height: 60vh !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Card do formulário de login */
+.haklai-login-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background-color: #ffffff !important;
+}
+
+.haklai-login-card .card-body {
+    padding: 2.5rem !important;
+}
+
+.haklai-login-card .fa-user-circle {
+    color: #10b981 !important;
+}
+
+/* Estilos do formulário de login do WordPress */
+#haklai_loginform {
+    width: 100% !important;
+}
+
+#haklai_loginform p {
+    margin-bottom: 1rem !important;
+}
+
+#haklai_loginform label {
+    display: block !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+    color: #374151 !important;
+    font-size: 0.95rem !important;
+}
+
+#haklai_loginform input[type="text"],
+#haklai_loginform input[type="password"] {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 6px !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+
+#haklai_loginform input[type="text"]:focus,
+#haklai_loginform input[type="password"]:focus {
+    outline: none !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Checkbox "Lembrar-me" */
+#haklai_loginform .login-remember {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    margin-top: 0.75rem !important;
+}
+
+#haklai_loginform .login-remember label {
+    display: inline !important;
+    margin-bottom: 0 !important;
+    font-weight: 400 !important;
+    cursor: pointer !important;
+    font-size: 0.9rem !important;
+}
+
+#haklai_loginform input[type="checkbox"] {
+    width: auto !important;
+    margin: 0 !important;
+    margin-right: 0.5rem !important;
+    cursor: pointer !important;
+}
+
+/* Botão de login */
+#haklai_loginform .login-submit {
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+}
+
+#haklai_loginform input[type="submit"] {
+    width: 100% !important;
+    padding: 0.75rem 1.5rem !important;
+    background-color: #10b981 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+#haklai_loginform input[type="submit"]:hover {
+    background-color: #059669 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+#haklai_loginform input[type="submit"]:active {
+    transform: translateY(0) !important;
+}
+
+/* Link "Esqueceu sua senha?" */
+.haklai-login-card .text-muted {
+    color: #6b7280 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.haklai-login-card .text-muted:hover {
+    color: #10b981 !important;
+}
+
+/* Alert informativo */
+.haklai-login-card .alert-info {
+    background-color: #dbeafe !important;
+    border-color: #bfdbfe !important;
+    color: #1e40af !important;
+    border-radius: 6px !important;
+}
+
+/* Mensagem de erro de login */
+.haklai-login-card .login-error {
+    background-color: #fee2e2 !important;
+    border: 1px solid #fca5a5 !important;
+    color: #991b1b !important;
+    padding: 0.75rem !important;
+    border-radius: 6px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Mensagem de acesso negado */
+.haklai-access-denied {
+    padding: 40px 20px !important;
+    min-height: 60vh !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.haklai-access-denied .card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+    border: none !important;
+    border-radius: 12px !important;
+}
+
+.haklai-access-denied .fa-lock {
+    color: #6b7280 !important;
+}
+
+.haklai-access-denied .btn-secondary {
+    background-color: #6b7280 !important;
+    border-color: #6b7280 !important;
+    transition: all 0.3s ease !important;
+}
+
+.haklai-access-denied .btn-secondary:hover {
+    background-color: #4b5563 !important;
+    border-color: #4b5563 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .haklai-login-card,
+    .haklai-access-denied .card {
+        background-color: #1f2937 !important;
+        color: #f3f4f6 !important;
+    }
+    
+    #haklai_loginform label {
+        color: #f3f4f6 !important;
+    }
+    
+    #haklai_loginform input[type="text"],
+    #haklai_loginform input[type="password"] {
+        background-color: #374151 !important;
+        border-color: #4b5563 !important;
+        color: #f3f4f6 !important;
+    }
+    
+    .haklai-login-card .text-muted {
+        color: #9ca3af !important;
+    }
+    
+    .haklai-login-card .alert-info {
+        background-color: #1e3a8a !important;
+        border-color: #1e40af !important;
+        color: #bfdbfe !important;
+    }
+    
+    /* Garantir visibilidade do cabeçalho da tabela em dark mode */
+    .table-custom thead {
+        background: linear-gradient(135deg, #4c63d2 0%, #5a3a7a 100%) !important;
+        color: #ffffff !important;
+    }
+    
+    .table-custom th {
+        color: #ffffff !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.4) !important;
+    }
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 576px) {
+    .haklai-login-card .card-body,
+    .haklai-access-denied .card-body {
+        padding: 1.5rem !important;
+    }
+    
+    .haklai-login-container,
+    .haklai-access-denied {
+        padding: 20px 15px !important;
+    }
+    
+    .haklai-login-card .fa-user-circle {
+        font-size: 3rem !important;
+    }
+    
+    .haklai-login-card h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    #haklai_loginform input[type="text"],
+    #haklai_loginform input[type="password"],
+    #haklai_loginform input[type="submit"] {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* ========================================
+   Reports Styles (Clean & Compact Design)
+   ======================================== */
+
+.reports-container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    overflow: hidden !important;
+}
+
+.reports-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 24px 28px !important;
+    position: relative !important;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-custom {
+    background-color: #e2e8f0 !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+}
+
+.progress-bar-custom {
+    height: 100% !important;
+    border-radius: 10px !important;
+    transition: width 0.3s ease !important;
+}
+
+/* Estilos específicos para progresso na tabela */
+.table-custom .progress-custom {
+    width: 50px !important;
+    height: 6px !important;
+}
+
+.table-custom .fw-bold[style*="color"] {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    margin-left: 8px !important;
+}
+
+/* Botões de ação na tabela */
+.table-custom .btn-sm {
+    padding: 6px 10px !important;
+    font-size: 0.75rem !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+}
+
+.table-custom .btn-sm i {
+    font-size: 0.7rem !important;
+}
+
+.table-custom .btn-sm:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* ===== TABLE CUSTOMIZATIONS ===== */
+.table-custom .fw-bold {
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    color: #2d3748 !important;
+}
+
+.table-custom small.text-muted {
+    font-size: 0.75rem !important;
+    color: #718096 !important;
+    display: block !important;
+    margin-top: 4px !important;
+}
+
+.table-custom .badge-info {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
+    color: #1e40af !important;
+    border: 1px solid rgba(30, 64, 175, 0.2) !important;
+}
+
+.table-custom .badge-info i {
+    color: #3b82f6 !important;
+}
+
+.table-custom .badge-warning {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+    color: #92400e !important;
+    border: 1px solid rgba(146, 64, 14, 0.2) !important;
+}
+
+.table-custom .badge-warning i {
+    color: #f59e0b !important;
+}
+
+.header-content {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.reports-header .header-content h1 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin: 0 0 8px 0 !important;
+    color: white !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.reports-header .header-content .subtitle {
+    font-size: 0.875rem !important;
+    opacity: 0.9 !important;
+    margin-bottom: 16px !important;
+    color: white !important;
+}
+
+.reports-header .user-info {
+    position: absolute !important;
+    top: 24px !important;
+    right: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: rgba(255,255,255,0.15) !important;
+    padding: 8px 14px !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+}
+
+.reports-header .user-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    border: 2px solid rgba(255,255,255,0.3) !important;
+}
+
+.reports-content {
+    padding: 24px 28px !important;
+}
+
+.section-title {
+    color: #374151 !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 16px !important;
+    position: relative !important;
+}
+
+.stats-dashboard,
+.filters-panel,
+.reports-section,
+.recent-reports {
+    background: white !important;
+    border-radius: 10px !important;
+    padding: 20px 24px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+.stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 12px !important;
+}
+
+.stat-card {
+    background: white !important;
+    border-radius: 10px !important;
+    padding: 16px 18px !important;
+    border: 1px solid #e5e7eb !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+}
+
+.stat-card:hover {
+    border-color: #d1d5db !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+}
+
+.stat-card .icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+}
+
+.stat-card .number {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+}
+
+.stat-card .stat-content {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.stat-card .label {
+    font-size: 0.8rem !important;
+    color: #6b7280 !important;
+    line-height: 1.3 !important;
+}
+
+/* FASE 2: Estilos para Card de Formações */
+.stat-card-formations {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+.stat-card-formations .stat-content {
+    width: 100% !important;
+}
+
+.stat-card-formations .formations-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+}
+
+.stat-card-formations .formation-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 6px 0 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+}
+
+.stat-card-formations .formation-item:last-child {
+    border-bottom: none !important;
+}
+
+.stat-card-formations .formation-label {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.stat-card-formations .formation-percentage {
+    font-size: 1.125rem !important;
+    font-weight: 700 !important;
+    color: #10b981 !important;
+    background: #d1fae5 !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+    min-width: 50px !important;
+    text-align: center !important;
+}
+
+.stat-card-formations .label {
+    margin-top: 4px !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.filters-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 12px !important;
+}
+
+.filter-group {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.filter-label {
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+    margin-bottom: 6px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.filters-panel .form-control,
+.filter-group .form-control {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    font-size: 0.875rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.filters-panel .form-control:focus,
+.filter-group .form-control:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    outline: none !important;
+}
+
+.report-item {
+    background: white !important;
+    border-radius: 10px !important;
+    padding: 18px 20px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    border: 1px solid #e5e7eb !important;
+    transition: all 0.2s ease !important;
+}
+
+.report-item::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 4px !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.report-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
+}
+
+.report-header {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+}
+
+.report-icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 14px !important;
+    color: white !important;
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
+}
+
+.report-icon.presence { background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important; }
+.report-icon.baptism { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important; }
+.report-icon.hierarchy { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important; }
+.report-icon.formations { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important; }
+.report-icon.skills { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important; }
+
+.report-content {
+    flex: 1 !important;
+}
+
+.report-title {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin-bottom: 6px !important;
+}
+
+.report-description {
+    color: #6b7280 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+}
+
+.report-actions {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    flex-wrap: wrap !important;
+}
+
+.report-actions .btn {
+    padding: 8px 16px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.report-actions .btn i {
+    font-size: 0.8rem !important;
+}
+
+.report-actions .btn-primary {
+    background: #667eea !important;
+    color: white !important;
+}
+
+.report-actions .btn-primary:hover {
+    background: #5568d3 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3) !important;
+}
+
+.report-actions .btn-secondary {
+    background: #f3f4f6 !important;
+    color: #4b5563 !important;
+}
+
+.report-actions .btn-secondary:hover {
+    background: #e5e7eb !important;
+}
+
+.report-actions .btn-outline-primary {
+    border: 1px solid #667eea !important;
+    background: transparent !important;
+    color: #667eea !important;
+}
+
+.report-actions .btn-outline-primary:hover {
+    background: #667eea !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3) !important;
+}
+
+.table-custom {
+    background: white !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.table-custom thead {
+    background: #f9fafb !important;
+}
+
+.table-custom th {
+    border: none !important;
+    padding: 10px 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-size: 0.8rem !important;
+    color: #374151 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    white-space: nowrap !important;
+}
+
+.table-custom td {
+    border: none !important;
+    padding: 12px 14px !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    font-size: 0.875rem !important;
+    color: #4b5563 !important;
+    vertical-align: middle !important;
+}
+
+.table-custom tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Zebrado para melhor legibilidade */
+.table-custom.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #ffffff !important;
+}
+
+.table-custom.table-striped tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa !important;
+}
+
+.table-custom.table-striped tbody tr:hover {
+    background-color: #f0f4ff !important;
+    transition: background-color 0.2s ease !important;
+}
+
+/* Garantir visibilidade do cabeçalho na seção de relatórios recentes */
+.recent-reports .table-custom thead {
+    background: linear-gradient(135deg, #4c63d2 0%, #5a3a7a 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+.recent-reports .table-custom th {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+    background: transparent !important;
+}
+
+.report-icon-small {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 12px !important;
+    color: white !important;
+    font-size: 0.75rem !important;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    flex-shrink: 0 !important;
+}
+
+.badge-custom {
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.2 !important;
+}
+
+.badge-custom i {
+    font-size: 0.7rem !important;
+    opacity: 0.9 !important;
+}
+
+.badge-info {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
+    color: #1e40af !important;
+    border: 1px solid rgba(30, 64, 175, 0.2) !important;
+}
+
+.badge-info i {
+    color: #3b82f6 !important;
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+    color: #92400e !important;
+    border: 1px solid rgba(146, 64, 14, 0.2) !important;
+}
+
+.badge-warning i {
+    color: #f59e0b !important;
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+    color: #065f46 !important;
+    border: 1px solid rgba(6, 95, 70, 0.2) !important;
+}
+
+.badge-success i {
+    color: #10b981 !important;
+}
+
+/* Responsividade para Reports */
+@media (max-width: 768px) {
+    .reports-content {
+        padding: 30px !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    .stat-card {
+        padding: 20px !important;
+    }
+    
+    .stat-card .number {
+        font-size: 2rem !important;
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .report-actions {
+        flex-direction: column !important;
+    }
+    
+    .reports-header .user-info {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin-top: 20px !important;
+        justify-content: center !important;
+    }
+    
+    .reports-header .header-content h1 {
+        font-size: 2rem !important;
+    }
+}
+
+/* Loading Overlay */
+.haklai-loading-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999 !important;
+}
+
+.haklai-loading-spinner {
+    background: white !important;
+    padding: 40px !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.haklai-loading-spinner i {
+    color: #667eea !important;
+    margin-bottom: 20px !important;
+}
+
+.haklai-loading-spinner p {
+    margin: 0 !important;
+    font-weight: 600 !important;
+    color: #2d3748 !important;
+}
+

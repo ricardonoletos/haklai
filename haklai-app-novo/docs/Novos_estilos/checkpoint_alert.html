@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerts &amp; Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#60A5FA", // A nice blue from the screenshot
+              "background-light": "#F8F9FA",
+              "background-dark": "#111827",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1F2937",
+              "text-light": "#1F2937",
+              "text-dark": "#E5E7EB",
+              "subtext-light": "#6B7280",
+              "subtext-dark": "#9CA3AF",
+              "icon-bg-light": "#EFF6FF",
+              "icon-bg-dark": "#374151"
+            },
+            fontFamily: {
+              display: ["Roboto", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+      .material-icons-outlined {
+        font-size: 20px;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="max-w-sm mx-auto flex flex-col h-screen">
+<header class="text-center pt-8 pb-4">
+<h1 class="text-2xl font-bold text-text-light dark:text-text-dark">Alerts &amp; Contact (Page 2 of 2)</h1>
+</header>
+<main class="flex-grow bg-card-light dark:bg-card-dark rounded-t-3xl shadow-lg flex flex-col overflow-hidden">
+<div class="bg-primary text-white p-4 flex items-center justify-center rounded-t-3xl">
+<span class="material-icons-outlined mr-3">notifications</span>
+<h2 class="text-xl font-bold">Alerts</h2>
+</div>
+<div class="flex-grow p-4 space-y-3 overflow-y-auto">
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] flex items-start space-x-4">
+<div class="bg-icon-bg-light dark:bg-icon-bg-dark p-3 rounded-full">
+<span class="material-icons-outlined text-primary">person_outline</span>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-text-light dark:text-text-dark">New Member: John D</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Joined "Project Alpha" meeting</p>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded-full">NEW</span>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-2">2m ago</p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] flex items-start space-x-4">
+<div class="bg-icon-bg-light dark:bg-icon-bg-dark p-3 rounded-full">
+<span class="material-icons-outlined text-primary">book</span>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-text-light dark:text-text-dark">Course Update: "Effective Communication"</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">New module available.</p>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded-full">NEW</span>
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-2">1h ago</p>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_12px_rgba(0,0,0,0.2)] flex items-start space-x-4">
+<div class="bg-icon-bg-light dark:bg-icon-bg-dark p-3 rounded-full">
+<span class="material-icons-outlined text-primary">campaign</span>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-text-light dark:text-text-dark">General Notice: System Maintenance</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Scheduled for tonight at 10 PM.</p>
+</div>
+<div class="text-right flex-shrink-0">
+<p class="text-xs text-subtext-light dark:text-subtext-dark mt-1">5h ago</p>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6 flex items-center justify-end relative">
+<div class="text-center mr-20">
+<p class="text-sm text-subtext-light dark:text-subtext-dark">Need assistance?</p>
+<a class="font-bold text-primary underline" href="#">Contact Support</a>
+</div>
+<button class="absolute right-6 bottom-6 bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+<span class="material-icons-outlined" style="font-size: 32px;">chat_bubble_outline</span>
+</button>
+</div>
+<nav class="bg-card-light dark:bg-card-dark border-t border-gray-200 dark:border-gray-700 w-full">
+<div class="flex justify-around items-center h-16">
+<a class="text-subtext-light dark:text-subtext-dark hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-icons-outlined">chat_bubble_outline</span>
+</a>
+<a class="text-primary dark:text-primary relative" href="#">
+<span class="material-icons-outlined">person_outline</span>
+<span class="absolute top-8 left-1/2 -translate-x-1/2 w-6 h-1 bg-primary rounded-full"></span>
+</a>
+</div>
+</nav>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Relatórios e Estatísticas</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#2b8cce", "background-light": "#f6f7f8", "background-dark": "#121a20"}, fontFamily: {display: "Manrope"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+    .material-icons {
+      font-size: inherit;
+    }::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #d1d5db;
+        border-radius: 10px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+        background-color: #4b5563;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-700 dark:text-slate-300">
+<div class="min-h-screen p-4 sm:p-6 lg:p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<header class="bg-primary/95 dark:bg-primary/90 text-white p-6 rounded-lg shadow-lg flex justify-between items-center flex-wrap gap-4">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold">Relatórios e Estatísticas</h1>
+<p class="text-sm md:text-base text-indigo-200">Gere relatórios detalhados e visualize estatísticas do sistema</p>
+</div>
+<div class="flex items-center gap-3 bg-white/10 p-2 rounded-full">
+<img alt="Avatar do usuário" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsKm1rwInaikQ-fm5eSP8lSzmMP8kgiWFH1Z-C5oQxB88STtEGlWkoUNhiFfTgOZxrKhsniuWkbS4oim8EhuJGs3su9FQyOlZe-0jDdpG71gJ9y93FfKWtjwtsnLXV_3y9GzFGv3yfmmeiFLtiZWQ0RInsGf_OaWuz8O9eiBLc6-5eiQsbaea1QJjLPrVLPZf43xJxAnO5UTIemjzFd0vj2rzTVhgYMkvxUSflmPXccz3CLho0oojQmOPXKVY9e00ubvYYh2PF"/>
+<div>
+<p class="font-semibold text-sm">manter</p>
+<p class="text-xs text-indigo-200">Pastor Supervisor</p>
+</div>
+</div>
+</header>
+<main class="space-y-8">
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+            Estatísticas Gerais
+            <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">groups</span>
+</div>
+<p class="text-3xl font-bold text-slate-800 dark:text-slate-100">52</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">TOTAL DE MEMBROS</p>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">people_alt</span>
+</div>
+<p class="text-3xl font-bold text-slate-800 dark:text-slate-100">8</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">CÉLULAS ATIVAS</p>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">event</span>
+</div>
+<p class="text-3xl font-bold text-slate-800 dark:text-slate-100">4</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">REUNIÕES (MÊS)</p>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-primary flex items-center justify-center mb-3">
+<span class="material-icons text-3xl">water_drop</span>
+</div>
+<p class="text-3xl font-bold text-slate-800 dark:text-slate-100">12%</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">NOVOS BATISMOS</p>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+            Filtros de Relatório
+            <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div>
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400" for="periodo">PERÍODO</label>
+<select class="w-full mt-1 p-2 bg-slate-100 dark:bg-zinc-800 border-slate-200 dark:border-zinc-700 rounded focus:ring-primary focus:border-primary" id="periodo">
+<option>Personalizado</option>
+<option>Últimos 7 dias</option>
+<option>Este mês</option>
+</select>
+</div>
+<div>
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400" for="data_inicio">DATA INÍCIO</label>
+<input class="w-full mt-1 p-2 bg-slate-100 dark:bg-zinc-800 border-slate-200 dark:border-zinc-700 rounded focus:ring-primary focus:border-primary" id="data_inicio" type="date" value="2025-11-01"/>
+</div>
+<div>
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400" for="data_fim">DATA FIM</label>
+<input class="w-full mt-1 p-2 bg-slate-100 dark:bg-zinc-800 border-slate-200 dark:border-zinc-700 rounded focus:ring-primary focus:border-primary" id="data_fim" type="date" value="2025-11-22"/>
+</div>
+<div>
+<label class="text-xs font-medium text-slate-500 dark:text-slate-400" for="celula_rede">CÉLULA/REDE</label>
+<select class="w-full mt-1 p-2 bg-slate-100 dark:bg-zinc-800 border-slate-200 dark:border-zinc-700 rounded focus:ring-primary focus:border-primary" id="celula_rede">
+<option>Todas</option>
+<option>Célula A</option>
+<option>Célula B</option>
+</select>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+            Relatórios Recentes
+            <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="overflow-x-auto">
+<table class="w-full min-w-[700px] text-sm text-left">
+<thead>
+<tr class="border-b border-slate-200 dark:border-zinc-700 text-xs uppercase text-slate-500 dark:text-slate-400">
+<th class="py-3 px-4 w-1/4">Descrição</th>
+<th class="py-3 px-4">Data</th>
+<th class="py-3 px-4 text-center">Valor 1</th>
+<th class="py-3 px-4 text-center">Valor 2</th>
+<th class="py-3 px-4">Progresso</th>
+<th class="py-3 px-4 text-center">Status</th>
+<th class="py-3 px-4 text-center">Ações</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 flex items-center justify-center font-bold">C</span>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">N/A</p>
+<p class="text-xs">Célula - francisco.nascimento</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<p class="font-medium">25/10/2025</p>
+<p class="text-xs">00:00</p>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">17</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">3</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="material-icons text-red-500 text-base">trending_down</span>
+<span class="font-semibold text-red-500">47.1%</span>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs font-semibold px-2.5 py-1 rounded-full">CONCLUÍDO</span>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="flex justify-center items-center gap-2">
+<button class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><span class="material-icons">download</span></button>
+<button class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 text-lg"><span class="material-icons">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 flex items-center justify-center font-bold">C</span>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">N/A</p>
+<p class="text-xs">Célula - joao.guedes</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<p class="font-medium">23/10/2025</p>
+<p class="text-xs">00:00</p>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">12</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">12</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="material-icons text-red-500 text-base">trending_down</span>
+<span class="font-semibold text-red-500">41.7%</span>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs font-semibold px-2.5 py-1 rounded-full">CONCLUÍDO</span>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="flex justify-center items-center gap-2">
+<button class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><span class="material-icons">download</span></button>
+<button class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 text-lg"><span class="material-icons">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="border-b border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50">
+<td class="py-3 px-4">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 flex items-center justify-center font-bold">C</span>
+<div>
+<p class="font-semibold text-slate-800 dark:text-slate-200">N/A</p>
+<p class="text-xs">Célula - ismael.alves</p>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<p class="font-medium">23/10/2025</p>
+<p class="text-xs">00:00</p>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-block bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">8</span>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full">0</span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="material-icons text-green-500 text-base">trending_up</span>
+<span class="font-semibold text-green-500">122.2%</span>
+</div>
+</td>
+<td class="py-3 px-4 text-center">
+<span class="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 text-xs font-semibold px-2.5 py-1 rounded-full">CONCLUÍDO</span>
+</td>
+<td class="py-3 px-4 text-center">
+<div class="flex justify-center items-center gap-2">
+<button class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-lg"><span class="material-icons">download</span></button>
+<button class="text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300 text-lg"><span class="material-icons">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="bg-white dark:bg-zinc-900/50 p-6 rounded-lg shadow-md">
+<h2 class="text-xl font-semibold text-center text-slate-800 dark:text-slate-100 mb-6 relative">
+            Relatórios Disponíveis
+            <span class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 h-0.5 w-16 bg-primary"></span>
+</h2>
+<div class="space-y-4">
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400 flex-shrink-0 flex items-center justify-center">
+<span class="material-icons text-3xl">groups</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-semibold text-slate-800 dark:text-slate-100">Relatório de Presença</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Análise detalhada da presença dos membros em reuniões de célula, eventos e atividades. Inclui gráficos de tendência, comparações mensais e identificação de padrões de frequência.</p>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button class="bg-primary hover:bg-primary/90 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">picture_as_pdf</span> GERAR PDF
+                </button>
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-slate-700 dark:text-slate-200 font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">description</span> EXCEL
+                </button>
+<button class="bg-slate-800 hover:bg-slate-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">visibility</span> VISUALIZAR
+                </button>
+</div>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex-shrink-0 flex items-center justify-center">
+<span class="material-icons text-3xl">water_drop</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-semibold text-slate-800 dark:text-slate-100">Relatório de Batismos</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Relatório completo dos batismos realizados, incluindo dados demográficos, localização, idade dos batizados e análise de crescimento espiritual da congregação.</p>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button class="bg-primary hover:bg-primary/90 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">picture_as_pdf</span> GERAR PDF
+                </button>
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-slate-700 dark:text-slate-200 font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">description</span> EXCEL
+                </button>
+<button class="bg-slate-800 hover:bg-slate-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">visibility</span> VISUALIZAR
+                </button>
+</div>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex-shrink-0 flex items-center justify-center">
+<span class="material-icons text-3xl">device_hub</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-semibold text-slate-800 dark:text-slate-100">Relatório de Hierarquia</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Análise da estrutura organizacional e distribuição de membros por níveis hierárquicos. Inclui organograma, responsabilidades e identificação de líderes em potencial.</p>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button class="bg-primary hover:bg-primary/90 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">picture_as_pdf</span> GERAR PDF
+                </button>
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-slate-700 dark:text-slate-200 font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">description</span> EXCEL
+                </button>
+<button class="bg-slate-800 hover:bg-slate-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">visibility</span> VISUALIZAR
+                </button>
+</div>
+</div>
+<div class="border border-slate-200 dark:border-zinc-800 p-4 rounded-lg flex flex-col md:flex-row items-start md:items-center gap-4">
+<div class="w-14 h-14 rounded-full bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 flex-shrink-0 flex items-center justify-center">
+<span class="material-icons text-3xl">construction</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-semibold text-slate-800 dark:text-slate-100">Relatório de Habilidades</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400">Mapeamento das habilidades dos membros e análise de talentos disponíveis na igreja. Inclui categorização por áreas de ministério e identificação de necessidades de treinamento.</p>
+</div>
+<div class="flex gap-2 flex-wrap">
+<button class="bg-primary hover:bg-primary/90 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">picture_as_pdf</span> GERAR PDF
+                </button>
+<button class="bg-slate-200 hover:bg-slate-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-slate-700 dark:text-slate-200 font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">description</span> EXCEL
+                </button>
+<button class="bg-slate-800 hover:bg-slate-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-white font-semibold text-xs py-2 px-3 rounded-md flex items-center gap-1.5 transition-colors">
+<span class="material-icons text-sm">visibility</span> VISUALIZAR
+                </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</div>
+</body></html>

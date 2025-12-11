@@ -1,0 +1,281 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║   📋 TODOS OS SHORTCODES DO HAKLAI APP                                   ║
+║                                                                            ║
+║   Versão: 2.0.0                                                           ║
+║   Data: 13 de Outubro de 2025                                             ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 SHORTCODES DISPONÍVEIS
+══════════════════════════════════════════════════════════════════════════════
+
+1️⃣  [Haklai_dashboard]
+    → Dashboard principal com estatísticas
+    → Permissão: haklai_access_dashboard
+    → Nível: 1+ (Líder ou superior)
+    → Status: ✅ FUNCIONAL
+
+2️⃣  [Haklai_checkpoint]
+    → Controle de presença (check-in de reuniões)
+    → Permissão: haklai_access_checkpoint
+    → Nível: 1+ (Líder ou superior)
+    → Status: ✅ FUNCIONAL
+
+3️⃣  [Haklai_configuracoes]
+    → Configurações do sistema (frontend)
+    → Permissão: haklai_access_settings
+    → Nível: 4+ (Pastor Senior ou Supervisor)
+    → Status: ⏳ FASE FINAL (usar Admin → Configurações por enquanto)
+    → Responsável: RICARDO NOLETO SARMENTO
+
+4️⃣  [Haklai_relatorios]
+    → Relatórios de células e presenças
+    → Permissão: haklai_access_reports
+    → Nível: 1+ (Líder ou superior)
+    → Status: ✅ FUNCIONAL
+
+
+📊 DETALHES DE CADA SHORTCODE
+══════════════════════════════════════════════════════════════════════════════
+
+
+1️⃣  DASHBOARD
+─────────────────────────────────────────────────────────────────────────────
+SHORTCODE:
+  [Haklai_dashboard]
+
+USO:
+  Criar página → Adicionar shortcode → Publicar
+
+ATRIBUTOS:
+  Nenhum atributo customizável
+
+EXEMPLO:
+  [Haklai_dashboard]
+
+QUEM VÊ:
+  ✅ Todos os líderes e pastores
+  ❌ Membros comuns
+
+
+2️⃣  CHECKPOINT (Controle de Presença)
+─────────────────────────────────────────────────────────────────────────────
+SHORTCODE:
+  [Haklai_checkpoint]
+
+USO:
+  Para marcar presença em reuniões
+
+ATRIBUTOS:
+  cell_id       → ID da célula (opcional)
+  meeting_date  → Data da reunião (opcional)
+
+EXEMPLOS:
+  [Haklai_checkpoint]
+  [Haklai_checkpoint cell_id="123"]
+  [Haklai_checkpoint meeting_date="2025-10-13"]
+
+QUEM VÊ:
+  ✅ Líderes da célula
+  ✅ Pastores e supervisores
+  ❌ Membros comuns
+
+
+3️⃣  CONFIGURAÇÕES ← VOCÊ PERGUNTOU SOBRE ESTE
+─────────────────────────────────────────────────────────────────────────────
+SHORTCODE:
+  [Haklai_configuracoes]
+
+USO:
+  Página de configurações no frontend (estilo user-facing)
+
+ATRIBUTOS:
+  show_license      → true/false (padrão: true)
+  show_system       → true/false (padrão: true)
+  show_permissions  → true/false (padrão: true)
+
+EXEMPLOS:
+  [Haklai_configuracoes]
+  [Haklai_configuracoes show_license="true"]
+  [Haklai_configuracoes show_system="true" show_permissions="false"]
+
+QUEM VÊ:
+  ✅ Pastor Senior (nível 4)
+  ✅ Pastor Supervisor (nível 5)
+  ❌ Líderes, Discipuladores, Membros
+
+NOTA IMPORTANTE:
+  ⚠️  Este shortcode é para configurações no FRONTEND
+  ⚠️  Para configurações de ADMIN (importar/exportar), use:
+      WordPress Admin → Haklai → Configurações
+
+
+4️⃣  RELATÓRIOS
+─────────────────────────────────────────────────────────────────────────────
+SHORTCODE:
+  [Haklai_relatorios]
+
+USO:
+  Exibir relatórios de células e presenças
+
+ATRIBUTOS:
+  default_period  → Número de dias (padrão: 30)
+  show_filters    → true/false (padrão: true)
+  show_history    → true/false (padrão: true)
+
+EXEMPLOS:
+  [Haklai_relatorios]
+  [Haklai_relatorios default_period="60"]
+  [Haklai_relatorios show_filters="true" show_history="false"]
+
+QUEM VÊ:
+  ✅ Todos os líderes e pastores
+  ❌ Membros comuns
+
+
+══════════════════════════════════════════════════════════════════════════════
+
+
+⚠️  IMPORTANTE: DIFERENÇA ENTRE CONFIGURAÇÕES
+══════════════════════════════════════════════════════════════════════════════
+
+🔹 CONFIGURAÇÕES DE ADMIN (Importação/Exportação):
+   📍 Local: WordPress Admin → Menu Haklai → Configurações
+   🎯 Para: Administradores
+   💼 Função: Importar/Exportar membros, backup, sistema
+   📄 Arquivo: includes/templates/admin-settings-page.php
+
+🔹 CONFIGURAÇÕES FRONTEND (Shortcode):
+   📍 Local: Página com [Haklai_configuracoes]
+   🎯 Para: Pastores Senior/Supervisor
+   💼 Função: Ver licença, sistema, permissões (visualização)
+   📄 Arquivo: includes/templates/configuracoes-template.php (se existir)
+
+
+🚀 COMO USAR CADA SHORTCODE
+══════════════════════════════════════════════════════════════════════════════
+
+OPÇÃO A: PÁGINAS SEPARADAS
+─────────────────────────────────────────────────────────────────────────────
+
+Página 1: Dashboard
+URL: /dashboard/
+Conteúdo: [Haklai_dashboard]
+
+Página 2: Presença
+URL: /presenca/
+Conteúdo: [Haklai_checkpoint]
+
+Página 3: Configurações
+URL: /configuracoes/
+Conteúdo: [Haklai_configuracoes]
+
+Página 4: Relatórios
+URL: /relatorios/
+Conteúdo: [Haklai_relatorios]
+
+
+OPÇÃO B: PÁGINA ÚNICA (Dashboard Completo)
+─────────────────────────────────────────────────────────────────────────────
+
+Página: Dashboard Completo
+URL: /painel/
+
+Conteúdo:
+<div class="haklai-painel">
+    <h1>Dashboard Haklai</h1>
+    [Haklai_dashboard]
+    
+    <hr>
+    
+    <h2>Controle de Presença</h2>
+    [Haklai_checkpoint]
+    
+    <hr>
+    
+    <h2>Relatórios</h2>
+    [Haklai_relatorios]
+</div>
+
+
+📋 REFERÊNCIA RÁPIDA
+══════════════════════════════════════════════════════════════════════════════
+
+SHORTCODE              | PERMISSÃO              | NÍVEL MÍNIMO
+───────────────────────┼────────────────────────┼──────────────
+[Haklai_dashboard]     | haklai_access_dashboard| 1 (Líder)
+[Haklai_checkpoint]    | haklai_access_checkpoint| 1 (Líder)
+[Haklai_configuracoes] | haklai_access_settings | 4 (Pastor Senior)
+[Haklai_relatorios]    | haklai_access_reports  | 1 (Líder)
+
+
+🎯 RESPOSTA DIRETA À SUA PERGUNTA
+══════════════════════════════════════════════════════════════════════════════
+
+SHORTCODE DE CONFIGURAÇÕES:
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│                                                                          │
+│   [Haklai_configuracoes]                                                │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘
+
+COMO USAR:
+  1. Criar página no WordPress
+  2. Adicionar: [Haklai_configuracoes]
+  3. Publicar
+  4. Acessar a página
+
+PERMISSÃO:
+  Apenas Pastores Senior e Supervisor (nível 4 e 5)
+
+
+💡 DICA IMPORTANTE
+══════════════════════════════════════════════════════════════════════════════
+
+⚠️  Se você quer IMPORTAR/EXPORTAR membros:
+    NÃO use o shortcode [Haklai_configuracoes]
+    
+    Use a página de ADMIN:
+    WordPress Admin → Haklai → Configurações
+    
+    Esta é a página que acabamos de criar com importação e exportação!
+
+
+🎯 USO RECOMENDADO POR PERFIL
+══════════════════════════════════════════════════════════════════════════════
+
+PASTOR SUPERVISOR/SENIOR (Nível 4-5):
+  ✅ WordPress Admin → Haklai → Configurações (Importar/Exportar)
+  ✅ [Haklai_configuracoes] (Visualizar configurações frontend)
+  ✅ [Haklai_relatorios]
+  ✅ [Haklai_dashboard]
+  ✅ [Haklai_checkpoint]
+
+PASTOR DE REDE/DISCIPULADOR (Nível 2-3):
+  ✅ [Haklai_relatorios]
+  ✅ [Haklai_dashboard]
+  ✅ [Haklai_checkpoint]
+
+LÍDER DE CÉLULA (Nível 1):
+  ✅ [Haklai_dashboard]
+  ✅ [Haklai_checkpoint]
+  ✅ [Haklai_relatorios]
+
+MEMBRO COMUM (Nível 0):
+  ❌ Sem acesso aos shortcodes
+
+
+══════════════════════════════════════════════════════════════════════════════
+
+✅ RESUMO RÁPIDO
+
+Shortcode de Configurações: [Haklai_configuracoes]
+Importar/Exportar: WordPress Admin → Haklai → Configurações (não é shortcode)
+
+══════════════════════════════════════════════════════════════════════════════
+
+Desenvolvido por: Ricardo Sarmento - https://linx.pt
+

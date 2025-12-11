@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haklai App - Relatórios (Estilo Checkpoint)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .reports-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .reports-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reports-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+        }
+        
+        .header-content .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+        
+        .user-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .reports-content {
+            padding: 50px;
+        }
+        
+        .section-title {
+            color: #2d3748;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        .stats-dashboard {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .stat-card .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            color: #4a5568;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .filters-panel {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .reports-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .report-item {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .report-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .report-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        .report-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .report-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .report-icon.presence { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .report-icon.baptism { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+        .report-icon.hierarchy { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .report-icon.skills { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        
+        .report-content {
+            flex: 1;
+        }
+        
+        .report-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .report-description {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .report-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 12px 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            border: none;
+            padding: 12px 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107, 114, 128, 0.3);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            padding: 10px 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .recent-reports {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .table-custom {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .table-custom thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .table-custom th {
+            border: none;
+            padding: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .table-custom td {
+            border: none;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .report-icon-small {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .badge-custom {
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .badge-success {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+        }
+        
+        .badge-warning {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+        }
+        
+        @media (max-width: 768px) {
+            .reports-content {
+                padding: 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 20px;
+            }
+            
+            .stat-card .number {
+                font-size: 2rem;
+            }
+            
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-actions {
+                flex-direction: column;
+            }
+            
+            .user-info {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 20px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reports-container">
+        <!-- Header -->
+        <div class="reports-header">
+            <div class="header-content">
+                <h1>Relatórios e Estatísticas</h1>
+                <div class="subtitle">Gere relatórios detalhados e visualize estatísticas do sistema</div>
+            </div>
+            
+            <div class="user-info">
+                <img src="https://via.placeholder.com/40x40/ffffff/667eea?text=JS" alt="João Silva" class="user-avatar">
+                <div>
+                    <div style="font-weight: 600;">João Silva</div>
+                    <div style="font-size: 0.8rem; opacity: 0.8;">Administrador Sistema</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="reports-content">
+            <!-- Stats Dashboard -->
+            <div class="stats-dashboard">
+                <h3 class="section-title">Estatísticas Gerais</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="icon">👥</div>
+                        <div class="number">1,500</div>
+                        <div class="label">Total de Membros</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">📊</div>
+                        <div class="number">85%</div>
+                        <div class="label">Presença Média</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">💧</div>
+                        <div class="number">23</div>
+                        <div class="label">Novos Batismos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon">🏠</div>
+                        <div class="number">12</div>
+                        <div class="label">Células Ativas</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filters Panel -->
+            <div class="filters-panel">
+                <h3 class="section-title">Filtros de Relatório</h3>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">Período</label>
+                        <select class="form-control">
+                            <option>Última semana</option>
+                            <option>Último mês</option>
+                            <option>Últimos 3 meses</option>
+                            <option>Último ano</option>
+                            <option>Personalizado</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Data Início</label>
+                        <input type="date" class="form-control" value="2025-01-01">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Data Fim</label>
+                        <input type="date" class="form-control" value="2025-01-31">
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Célula/Rede</label>
+                        <select class="form-control">
+                            <option>Todas</option>
+                            <option>Célula Alpha</option>
+                            <option>Célula Beta</option>
+                            <option>Rede Norte</option>
+                            <option>Rede Sul</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Relatórios Disponíveis -->
+            <div class="reports-section">
+                <h3 class="section-title">Relatórios Disponíveis</h3>
+                
+                <div class="report-item">
+                    <div class="report-header">
+                        <div class="report-icon presence">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="report-content">
+                            <h6 class="report-title">Relatório de Presença</h6>
+                            <p class="report-description">
+                                Análise detalhada da presença dos membros em reuniões de célula, eventos e atividades. 
+                                Inclui gráficos de tendência, comparações mensais e identificação de padrões de frequência.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="report-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-download me-2"></i>Gerar PDF
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-file-excel me-2"></i>Excel
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-eye me-2"></i>Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="report-item">
+                    <div class="report-header">
+                        <div class="report-icon baptism">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="report-content">
+                            <h6 class="report-title">Relatório de Batismos</h6>
+                            <p class="report-description">
+                                Relatório completo dos batismos realizados, incluindo dados demográficos, localização, 
+                                idade dos batizados e análise de crescimento espiritual da congregação.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="report-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-download me-2"></i>Gerar PDF
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-file-excel me-2"></i>Excel
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-eye me-2"></i>Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="report-item">
+                    <div class="report-header">
+                        <div class="report-icon hierarchy">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <div class="report-content">
+                            <h6 class="report-title">Relatório de Hierarquia</h6>
+                            <p class="report-description">
+                                Análise da estrutura organizacional e distribuição de membros por níveis hierárquicos. 
+                                Inclui organograma, responsabilidades e identificação de líderes em potencial.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="report-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-download me-2"></i>Gerar PDF
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-file-excel me-2"></i>Excel
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-eye me-2"></i>Visualizar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="report-item">
+                    <div class="report-header">
+                        <div class="report-icon skills">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="report-content">
+                            <h6 class="report-title">Relatório de Habilidades</h6>
+                            <p class="report-description">
+                                Mapeamento das habilidades dos membros e análise de talentos disponíveis na igreja. 
+                                Inclui categorização por áreas de ministério e identificação de necessidades de treinamento.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="report-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-download me-2"></i>Gerar PDF
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-file-excel me-2"></i>Excel
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-eye me-2"></i>Visualizar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Relatórios Recentes -->
+            <div class="recent-reports">
+                <h3 class="section-title">Relatórios Recentes</h3>
+                
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>Relatório</th>
+                                <th>Tipo</th>
+                                <th>Período</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="report-icon-small presence">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        Relatório de Presença
+                                    </div>
+                                </td>
+                                <td>PDF</td>
+                                <td>Jan 2025</td>
+                                <td>08/01/2025</td>
+                                <td><span class="badge-custom badge-success">Concluído</span></td>
+                                <td>
+                                    <button class="btn btn-outline-primary btn-sm me-1">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="report-icon-small baptism">
+                                            <i class="fas fa-tint"></i>
+                                        </div>
+                                        Relatório de Batismos
+                                    </div>
+                                </td>
+                                <td>Excel</td>
+                                <td>Dez 2024</td>
+                                <td>05/01/2025</td>
+                                <td><span class="badge-custom badge-success">Concluído</span></td>
+                                <td>
+                                    <button class="btn btn-outline-primary btn-sm me-1">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="report-icon-small hierarchy">
+                                            <i class="fas fa-sitemap"></i>
+                                        </div>
+                                        Relatório de Hierarquia
+                                    </div>
+                                </td>
+                                <td>PDF</td>
+                                <td>Nov 2024</td>
+                                <td>02/01/2025</td>
+                                <td><span class="badge-custom badge-warning">Processando</span></td>
+                                <td>
+                                    <button class="btn btn-outline-secondary btn-sm" disabled>
+                                        <i class="fas fa-clock"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
